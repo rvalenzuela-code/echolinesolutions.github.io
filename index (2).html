@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Echoline Solutions — Bilingual virtual receptionist and client intake for law firms, dental offices, and medical clinics.">
+<title>Echoline Solutions — Bilingual Legal &amp; Medical Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B2545;--blue:#0B72C8;--sky:#54BFFF;--ice:#E8F4FF;
+  --amber:#F5A623;--green:#1A9E68;--slate:#8A9BB0;
+  --offwhite:#F5F7FA;--white:#FFFFFF;--dark:#080F1E;
+  --border:#E2E8F0;--text:#1E293B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.08;letter-spacing:-0.02em;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulseDot{0%,100%{transform:scale(1);}50%{transform:scale(1.5);opacity:.5;}}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.fu{animation:fadeUp .65s cubic-bezier(.22,1,.36,1) both;}
+.d1{animation-delay:.08s;}.d2{animation-delay:.18s;}.d3{animation-delay:.28s;}.d4{animation-delay:.38s;}.d5{animation-delay:.48s;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(11,37,69,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(84,191,255,.1);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-mark{width:34px;height:34px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.logo-text{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-.01em;}
+.logo-sub{font-size:9px;letter-spacing:.12em;color:var(--sky);text-transform:uppercase;margin-top:1px;}
+.nav-right{display:flex;align-items:center;gap:24px;}
+.nav-links{display:flex;align-items:center;gap:22px;}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.lang-toggle{display:flex;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;overflow:hidden;cursor:pointer;}
+.lang-btn{padding:5px 12px;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);transition:all .2s;border:none;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.lang-btn.active{background:var(--blue);color:#fff;border-radius:20px;}
+.nav-cta{background:var(--blue);color:#fff;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;transition:all .2s;}
+.nav-cta:hover{background:#0960ab;transform:translateY(-1px);}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:100px 6% 80px;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(84,191,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(84,191,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(11,114,200,.22) 0%,transparent 70%);top:-100px;right:-80px;pointer-events:none;}
+.hero-glow2{position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.08) 0%,transparent 70%);bottom:0;left:25%;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:780px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(84,191,255,.08);border:1px solid rgba(84,191,255,.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;color:var(--sky);margin-bottom:28px;letter-spacing:.06em;text-transform:uppercase;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulseDot 2s ease-in-out infinite;flex-shrink:0;}
+.hero h1{font-size:clamp(38px,6vw,78px);font-weight:800;color:#fff;line-height:1.0;margin-bottom:22px;}
+.hero h1 .c-sky{color:var(--sky);}
+.hero h1 .c-amber{color:var(--amber);}
+.hero-sub{font-size:clamp(15px,1.8vw,18px);color:var(--slate);line-height:1.7;margin-bottom:40px;max-width:540px;font-weight:300;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;}
+.btn-main{background:var(--blue);color:#fff;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;}
+.btn-main:hover{background:#0960ab;transform:translateY(-2px);box-shadow:0 12px 32px rgba(11,114,200,.38);}
+.btn-outline-white{color:rgba(255,255,255,.7);padding:14px 22px;border-radius:8px;font-size:14px;font-weight:500;border:1px solid rgba(255,255,255,.18);cursor:pointer;transition:all .2s;background:transparent;font-family:'DM Sans',sans-serif;}
+.btn-outline-white:hover{border-color:rgba(255,255,255,.45);color:#fff;}
+.hero-stats{display:flex;gap:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);flex-wrap:wrap;}
+.h-stat-n{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1;}
+.h-stat-n span{color:var(--amber);}
+.h-stat-l{font-size:12px;color:var(--slate);margin-top:4px;line-height:1.4;}
+
+/* TICKER */
+.ticker{background:var(--amber);padding:10px 0;overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-flex;animation:ticker 32s linear infinite;}
+.t-item{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--navy);padding:0 24px;letter-spacing:.07em;text-transform:uppercase;}
+.t-sep{color:var(--navy);opacity:.35;}
+
+/* SECTIONS */
+.section{padding:88px 6%;}
+.mw{max-width:1080px;margin:0 auto;}
+.s-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:block;}
+.s-title{font-size:clamp(28px,3.8vw,48px);font-weight:800;line-height:1.08;margin-bottom:16px;}
+.s-sub{font-size:16px;color:var(--slate);line-height:1.7;max-width:500px;font-weight:300;}
+.s-head{margin-bottom:56px;}
+
+/* SERVE */
+.serve{background:var(--offwhite);}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.serve-card{background:#fff;border-radius:14px;padding:32px 26px;border:1.5px solid var(--border);transition:all .3s;position:relative;overflow:hidden;}
+.serve-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.serve-card:hover{transform:translateY(-5px);box-shadow:0 18px 48px rgba(11,37,69,.09);border-color:var(--blue);}
+.serve-card:hover::after{transform:scaleX(1);}
+.serve-icon{font-size:32px;margin-bottom:16px;display:block;}
+.serve-card h3{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.serve-card p{font-size:13px;color:var(--slate);line-height:1.7;}
+.serve-tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;}
+.serve-tag{font-size:11px;font-weight:600;color:var(--blue);background:var(--ice);padding:3px 10px;border-radius:20px;}
+
+/* PROBLEM */
+.problem{background:var(--navy);}
+.problem .s-label{color:var(--sky);}
+.problem .s-title{color:#fff;}
+.problem .s-sub{color:var(--slate);}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:14px;overflow:hidden;margin-top:0;}
+.prob-card{padding:36px 32px;background:rgba(255,255,255,.03);border:1px solid rgba(84,191,255,.07);transition:background .3s;}
+.prob-card:hover{background:rgba(255,255,255,.06);}
+.prob-num{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;color:rgba(84,191,255,.1);line-height:1;margin-bottom:10px;}
+.prob-card h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;}
+.prob-card p{font-size:13px;color:var(--slate);line-height:1.7;}
+.prob-hl{background:rgba(11,114,200,.15);border-color:rgba(11,114,200,.28);}
+
+/* HOW */
+.how{background:#fff;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+.steps::before{content:'';position:absolute;top:26px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--blue),var(--sky));z-index:0;}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1;}
+.step-n{width:52px;height:52px;border-radius:50%;background:var(--navy);border:3px solid var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--sky);margin-bottom:18px;transition:all .3s;flex-shrink:0;}
+.step:hover .step-n{background:var(--blue);color:#fff;transform:scale(1.1);}
+.step h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.step p{font-size:12px;color:var(--slate);line-height:1.65;}
+
+/* SERVICES */
+.services{background:var(--navy);}
+.services .s-label{color:var(--sky);}
+.services .s-title{color:#fff;}
+.services .s-sub{color:var(--slate);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.svc-card{background:rgba(255,255,255,.04);border:1px solid rgba(84,191,255,.1);border-radius:12px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.svc-card:hover{border-color:rgba(84,191,255,.28);background:rgba(255,255,255,.07);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-icon{width:40px;height:40px;border-radius:9px;background:rgba(11,114,200,.2);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:16px;}
+.svc-card h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;}
+.svc-card p{font-size:13px;color:var(--slate);line-height:1.65;}
+.upsell-card{grid-column:1/-1;background:linear-gradient(135deg,rgba(245,166,35,.1),rgba(11,114,200,.1));border:1px solid rgba(245,166,35,.22);border-radius:12px;padding:32px;display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;}
+.upsell-badge{background:var(--amber);color:var(--navy);font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;margin-top:3px;}
+.upsell-body{flex:1;min-width:220px;}
+.upsell-body h3{font-size:19px;font-weight:700;color:#fff;margin-bottom:8px;}
+.upsell-body p{font-size:13px;color:var(--slate);line-height:1.7;}
+.upsell-price{text-align:right;flex-shrink:0;}
+.upsell-from{font-size:10px;color:var(--slate);letter-spacing:.05em;text-transform:uppercase;}
+.upsell-num{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;color:var(--amber);line-height:1.1;}
+.upsell-mo{font-size:12px;color:var(--slate);}
+
+/* PRICING */
+.pricing{background:var(--offwhite);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
+.pc{background:#fff;border-radius:14px;padding:32px 26px;border:1.5px solid var(--border);transition:all .3s;position:relative;}
+.pc:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(11,37,69,.1);}
+.pc.pop{background:var(--navy);border-color:var(--blue);transform:translateY(-10px);box-shadow:0 24px 64px rgba(11,37,69,.28);}
+.pc.pop:hover{transform:translateY(-14px);}
+.pop-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--navy);font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+.pc-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+.pc.pop .pc-label{color:var(--sky);}
+.pc-name{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:var(--navy);margin-bottom:16px;}
+.pc.pop .pc-name{color:#fff;}
+.pc-price{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;color:var(--navy);line-height:1;}
+.pc.pop .pc-price{color:#fff;}
+.pc-price sup{font-size:19px;vertical-align:top;margin-top:9px;display:inline-block;}
+.pc-per{font-size:12px;color:var(--slate);margin-bottom:22px;}
+.pc-div{height:1px;background:var(--border);margin-bottom:20px;}
+.pc.pop .pc-div{background:rgba(255,255,255,.1);}
+.pc-feats{list-style:none;margin-bottom:26px;}
+.pc-feats li{font-size:13px;color:var(--slate);padding:7px 0;display:flex;align-items:flex-start;gap:9px;border-bottom:1px solid var(--offwhite);}
+.pc.pop .pc-feats li{border-color:rgba(255,255,255,.06);color:rgba(255,255,255,.72);}
+.pc-feats li:last-child{border:none;}
+.ck{color:var(--green);font-size:12px;flex-shrink:0;margin-top:2px;}
+.btn-pc{display:block;width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:600;text-align:center;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-pc-ol{background:transparent;border:1.5px solid var(--blue);color:var(--blue);}
+.btn-pc-ol:hover{background:var(--blue);color:#fff;}
+.btn-pc-solid{background:var(--blue);color:#fff;}
+.btn-pc-solid:hover{background:#0960ab;}
+.downsell{margin-top:20px;background:#fff;border-radius:12px;padding:26px;border:1.5px dashed #CBD5E1;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.downsell-l h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.downsell-l p{font-size:13px;color:var(--slate);max-width:520px;}
+.downsell-price{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--navy);white-space:nowrap;flex-shrink:0;}
+
+/* WHY */
+.why{background:#fff;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.why-feats{display:flex;flex-direction:column;gap:20px;}
+.why-feat{display:flex;gap:15px;padding:20px;border-radius:11px;border:1px solid transparent;transition:all .3s;cursor:default;}
+.why-feat:hover{border-color:var(--ice);background:var(--offwhite);}
+.why-feat-icon{width:40px;height:40px;border-radius:9px;background:var(--ice);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:background .3s;}
+.why-feat:hover .why-feat-icon{background:var(--blue);}
+.why-feat h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.why-feat p{font-size:13px;color:var(--slate);line-height:1.65;}
+.why-vis{background:var(--navy);border-radius:18px;padding:32px;animation:float 7s ease-in-out infinite;position:relative;overflow:hidden;}
+.why-vis-bg{position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(11,114,200,.28),transparent 60%);pointer-events:none;}
+.why-vis-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);margin-bottom:16px;position:relative;z-index:1;}
+.intake-card{background:rgba(255,255,255,.05);border:1px solid rgba(84,191,255,.12);border-radius:11px;padding:14px 16px;margin-bottom:10px;position:relative;z-index:1;}
+.intake-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;gap:8px;}
+.intake-name{font-size:12px;font-weight:600;color:#fff;flex:1;min-width:0;}
+.intake-badge{font-size:10px;font-weight:600;padding:2px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.b-pi{background:rgba(226,75,74,.2);color:#F87171;}
+.b-imm{background:rgba(245,166,35,.2);color:var(--amber);}
+.b-fam{background:rgba(26,158,104,.2);color:#4ADE80;}
+.intake-detail{font-size:11px;color:var(--slate);line-height:1.5;}
+.why-nums{display:flex;gap:12px;margin-top:18px;position:relative;z-index:1;}
+.why-num{flex:1;background:rgba(255,255,255,.04);border-radius:9px;padding:12px;border:1px solid rgba(255,255,255,.06);text-align:center;}
+.why-num-n{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--amber);}
+.why-num-l{font-size:10px;color:var(--slate);margin-top:2px;}
+
+/* TESTIMONIAL */
+.testimonial{background:var(--navy);padding:88px 6%;}
+.testimonial .s-label{color:var(--sky);}
+.testimonial .s-title{color:#fff;}
+.quote-wrap{max-width:680px;margin:48px auto 0;text-align:center;}
+.quote-mark{font-family:'Syne',sans-serif;font-size:100px;font-weight:800;color:rgba(84,191,255,.1);line-height:.55;display:block;margin-bottom:14px;}
+.quote-text{font-family:'Syne',sans-serif;font-size:clamp(19px,2.6vw,28px);font-weight:700;color:#fff;line-height:1.38;margin-bottom:22px;}
+.quote-src{font-size:13px;color:var(--slate);}
+.quote-src strong{color:var(--sky);}
+
+/* FAQ */
+.faq{background:var(--offwhite);}
+.faq-list{max-width:700px;}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0;}
+.faq-q{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;line-height:1.4;}
+.faq-q::after{content:'+';font-size:20px;color:var(--blue);flex-shrink:0;transition:transform .25s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{font-size:13px;color:var(--slate);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s;}
+.faq-item.open .faq-a{max-height:260px;padding-top:12px;}
+
+/* CTA BAND */
+.cta-band{background:var(--navy);padding:88px 6%;text-align:center;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(11,114,200,.24) 0%,transparent 65%);pointer-events:none;}
+.cta-band h2{font-size:clamp(30px,4.5vw,58px);color:#fff;margin-bottom:12px;position:relative;z-index:1;}
+.cta-band p{font-size:16px;color:var(--slate);margin-bottom:36px;position:relative;z-index:1;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+
+/* CONTACT */
+.contact{background:var(--offwhite);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;}
+.ci h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.ci p{font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:22px;}
+.ci-item{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.ci-icon{width:36px;height:36px;border-radius:8px;background:var(--ice);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.ci-text{font-size:13px;color:var(--slate);}
+.ci-text strong{display:block;font-size:12px;color:var(--navy);font-weight:600;margin-bottom:1px;}
+.form{display:flex;flex-direction:column;gap:14px;background:#fff;padding:32px;border-radius:14px;border:1.5px solid var(--border);}
+.form-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.form-sub{font-size:13px;color:var(--slate);margin-bottom:8px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fl{font-size:11px;font-weight:600;color:var(--navy);letter-spacing:.04em;text-transform:uppercase;}
+.fi,.fs,.ft{padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;color:var(--navy);background:#fff;font-family:'DM Sans',sans-serif;transition:border-color .2s;outline:none;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--blue);}
+.ft{min-height:95px;resize:vertical;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.btn-submit{background:var(--blue);color:#fff;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;width:100%;}
+.btn-submit:hover{background:#0960ab;transform:translateY(-1px);}
+.form-note{font-size:11px;color:var(--slate);text-align:center;}
+.success-msg{display:none;background:#E1F5EE;border:1px solid var(--green);border-radius:8px;padding:16px;text-align:center;color:#0F6E56;font-size:14px;font-weight:500;}
+
+/* FOOTER */
+footer{background:var(--dark);padding:56px 6% 28px;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.ft-brand p{font-size:13px;color:var(--slate);line-height:1.7;margin-top:12px;max-width:240px;}
+.ft-col h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:.04em;}
+.ft-col a{display:block;font-size:12px;color:var(--slate);margin-bottom:8px;transition:color .2s;}
+.ft-col a:hover{color:var(--sky);}
+.ft-bot{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.ft-bot p,.ft-bot a{font-size:11px;color:rgba(138,155,176,.55);}
+.ft-bot a:hover{color:var(--sky);}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav-links{display:none;}
+  .serve-grid,.svc-grid,.pricing-grid{grid-template-columns:1fr;}
+  .prob-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .steps::before{display:none;}
+  .why-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+  .pc.pop{transform:none;}
+  .upsell-card{flex-direction:column;}
+  .upsell-price{text-align:left;}
+}
+@media(max-width:600px){
+  .section{padding:64px 5%;}
+  .hero{padding:90px 5% 64px;}
+  .hero-stats{gap:24px;}
+  .f2{grid-template-columns:1fr;}
+  .ft-top{grid-template-columns:1fr;}
+  .downsell{flex-direction:column;align-items:flex-start;}
+  .hero-badge{font-size:10px;}
+}
+
+/* LANG HIDDEN */
+[data-lang]{display:none;}
+[data-lang].active{display:block;}
+span[data-lang].active{display:inline;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">⚖️</div>
+    <div>
+      <div class="logo-text">echoline</div>
+      <div class="logo-sub">solutions</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#serve" data-en="Who We Serve" data-es="A Quién Servimos" class="nav-link-item">Who We Serve</a>
+      <a href="#services" data-en="Services" data-es="Servicios" class="nav-link-item">Services</a>
+      <a href="#pricing" data-en="Pricing" data-es="Precios" class="nav-link-item">Pricing</a>
+      <a href="#faq" data-en="FAQ" data-es="Preguntas" class="nav-link-item">FAQ</a>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language toggle">
+      <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+      <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-en="Get Started" data-es="Comenzar">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge fu d1">
+      <span class="badge-dot"></span>
+      <span data-lang="en" class="active">Bilingual Legal &amp; Medical Intake Specialists</span>
+      <span data-lang="es">Especialistas Bilingües en Recepción Legal y Médica</span>
+    </div>
+    <h1 class="fu d2">
+      <span data-lang="en" class="active">Every client<br>deserves to be<br><span class="c-sky">heard</span> — in their<br><span class="c-amber">language.</span></span>
+      <span data-lang="es">Cada cliente<br>merece ser<br><span class="c-sky">escuchado</span> — en su<br><span class="c-amber">idioma.</span></span>
+    </h1>
+    <p class="hero-sub fu d3">
+      <span data-lang="en" class="active">Echoline provides bilingual virtual receptionist and client intake services for law firms, dental offices, and medical clinics — so you never miss a Spanish-speaking client again.</span>
+      <span data-lang="es">Echoline ofrece servicios bilingües de recepcionista virtual e intake de clientes para bufetes de abogados, consultorios dentales y clínicas médicas — para que nunca pierdas un cliente hispanohablante.</span>
+    </p>
+    <div class="hero-btns fu d4">
+      <a href="#contact" class="btn-main">
+        <span data-lang="en" class="active">Book a Free Consultation →</span>
+        <span data-lang="es">Agenda una Consulta Gratis →</span>
+      </a>
+      <a href="#serve" class="btn-outline-white">
+        <span data-lang="en" class="active">See Who We Serve</span>
+        <span data-lang="es">Ver a Quién Servimos</span>
+      </a>
+    </div>
+    <div class="hero-stats fu d5">
+      <div><div class="h-stat-n">$0<span> setup</span></div><div class="h-stat-l"><span data-lang="en" class="active">No setup fees.<br>Month to month.</span><span data-lang="es">Sin costo inicial.<br>Mes a mes.</span></div></div>
+      <div><div class="h-stat-n">24<span>hr</span></div><div class="h-stat-l"><span data-lang="en" class="active">Live and answering<br>within one business day.</span><span data-lang="es">En funcionamiento<br>en un día hábil.</span></div></div>
+      <div><div class="h-stat-n">2<span> lang</span></div><div class="h-stat-l"><span data-lang="en" class="active">English &amp; Spanish<br>on every plan.</span><span data-lang="es">Inglés y español<br>en todos los planes.</span></div></div>
+      <div><div class="h-stat-n">100<span>%</span></div><div class="h-stat-l"><span data-lang="en" class="active">HIPAA-aware intake<br>protocols included.</span><span data-lang="es">Protocolos de intake<br>con conciencia HIPAA.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="t-item">Bilingual Intake</span><span class="t-sep"> · </span>
+    <span class="t-item">Law Firm Receptionist</span><span class="t-sep"> · </span>
+    <span class="t-item">Dental Office Coverage</span><span class="t-sep"> · </span>
+    <span class="t-item">Medical Clinic Intake</span><span class="t-sep"> · </span>
+    <span class="t-item">Spanish-Speaking Clients</span><span class="t-sep"> · </span>
+    <span class="t-item">Lead Generation</span><span class="t-sep"> · </span>
+    <span class="t-item">After-Hours Answering</span><span class="t-sep"> · </span>
+    <span class="t-item">No Long-Term Contracts</span><span class="t-sep"> · </span>
+    <span class="t-item">Bilingual Intake</span><span class="t-sep"> · </span>
+    <span class="t-item">Law Firm Receptionist</span><span class="t-sep"> · </span>
+    <span class="t-item">Dental Office Coverage</span><span class="t-sep"> · </span>
+    <span class="t-item">Medical Clinic Intake</span><span class="t-sep"> · </span>
+    <span class="t-item">Spanish-Speaking Clients</span><span class="t-sep"> · </span>
+    <span class="t-item">Lead Generation</span><span class="t-sep"> · </span>
+    <span class="t-item">After-Hours Answering</span><span class="t-sep"> · </span>
+    <span class="t-item">No Long-Term Contracts</span><span class="t-sep"> · </span>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<section class="section serve" id="serve">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label"><span data-lang="en" class="active">Who We Serve</span><span data-lang="es">A Quién Servimos</span></span>
+      <h2 class="s-title"><span data-lang="en" class="active">Built for professionals who<br>can't afford to miss a call.</span><span data-lang="es">Para profesionales que no<br>pueden perder una llamada.</span></h2>
+      <p class="s-sub"><span data-lang="en" class="active">We specialize in high-stakes intake where one missed call means a lost case, patient, or appointment — and where bilingual coverage is non-negotiable.</span><span data-lang="es">Nos especializamos en entornos de alto impacto donde una llamada perdida significa un caso, paciente o cita perdida — y donde la cobertura bilingüe es esencial.</span></p>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card">
+        <span class="serve-icon">⚖️</span>
+        <h3><span data-lang="en" class="active">Law Firms</span><span data-lang="es">Bufetes de Abogados</span></h3>
+        <p><span data-lang="en" class="active">Personal injury, immigration, family law, and criminal defense firms serving Spanish-speaking communities. One missed intake call can mean a lost $15,000+ case. We make sure that never happens.</span><span data-lang="es">Bufetes de lesiones personales, inmigración, derecho familiar y defensa criminal que sirven a comunidades hispanohablantes. Una llamada perdida puede significar perder un caso de más de $15,000.</span></p>
+        <div class="serve-tags">
+          <span class="serve-tag">Personal Injury</span>
+          <span class="serve-tag">Immigration</span>
+          <span class="serve-tag">Family Law</span>
+          <span class="serve-tag">Criminal Defense</span>
+        </div>
+      </div>
+      <div class="serve-card">
+        <span class="serve-icon">🦷</span>
+        <h3><span data-lang="en" class="active">Dental Offices</span><span data-lang="es">Consultorios Dentales</span></h3>
+        <p><span data-lang="en" class="active">Dental practices in bilingual communities lose appointments every week to missed calls and language barriers. We answer, schedule, and confirm in English and Spanish so your chairs stay full.</span><span data-lang="es">Los consultorios dentales en comunidades bilingües pierden citas cada semana por llamadas perdidas y barreras idiomáticas. Contestamos, agendamos y confirmamos en inglés y español.</span></p>
+        <div class="serve-tags">
+          <span class="serve-tag">Scheduling</span>
+          <span class="serve-tag">Insurance Intake</span>
+          <span class="serve-tag">New Patients</span>
+        </div>
+      </div>
+      <div class="serve-card">
+        <span class="serve-icon">🏥</span>
+        <h3><span data-lang="en" class="active">Medical Clinics</span><span data-lang="es">Clínicas Médicas</span></h3>
+        <p><span data-lang="en" class="active">Urgent care centers, specialty clinics, and private practices serving diverse patient populations. We handle intake, appointment scheduling, and insurance verification with full bilingual coverage.</span><span data-lang="es">Centros de atención urgente, clínicas especializadas y consultorios privados. Manejamos el intake, agendamiento de citas y verificación de seguros con cobertura bilingüe completa.</span></p>
+        <div class="serve-tags">
+          <span class="serve-tag">Patient Intake</span>
+          <span class="serve-tag">Scheduling</span>
+          <span class="serve-tag">Insurance Verification</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section problem" id="problem">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label"><span data-lang="en" class="active">The Problem</span><span data-lang="es">El Problema</span></span>
+      <h2 class="s-title"><span data-lang="en" class="active">Spanish-speaking clients are<br>calling. Nobody answers.</span><span data-lang="es">Los clientes hispanohablantes<br>llaman. Nadie contesta.</span></h2>
+      <p class="s-sub"><span data-lang="en" class="active">41 million people in the US speak Spanish at home. Most law firms, dental offices, and clinics have no one who can take their call professionally — in their language.</span><span data-lang="es">41 millones de personas en EEUU hablan español en casa. La mayoría de los bufetes y clínicas no tiene a nadie que pueda atenderles profesionalmente en su idioma.</span></p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-num">01</div>
+        <h3><span data-lang="en" class="active">Calls go to voicemail</span><span data-lang="es">Las llamadas van al buzón</span></h3>
+        <p><span data-lang="en" class="active">Most professional offices miss 30–40% of inbound calls during peak hours. Spanish-speaking callers who hit voicemail almost never leave a message — they hang up and call someone else.</span><span data-lang="es">La mayoría de los despachos pierden el 30-40% de las llamadas entrantes en horas pico. Los hispanohablantes que llegan al buzón casi nunca dejan mensaje — cuelgan y llaman a otro.</span></p>
+      </div>
+      <div class="prob-card prob-hl">
+        <div class="prob-num">02</div>
+        <h3><span data-lang="en" class="active">Language barriers lose clients</span><span data-lang="es">Las barreras idiomáticas pierden clientes</span></h3>
+        <p><span data-lang="en" class="active">When a Spanish-speaking client calls and no one can help them in their language, they don't wait. They find someone who can. Your competitor just got that case or appointment.</span><span data-lang="es">Cuando un cliente hispanohablante llama y nadie puede atenderle en su idioma, no espera. Busca quien pueda. Tu competidor acaba de ganar ese caso o esa cita.</span></p>
+      </div>
+      <div class="prob-card prob-hl">
+        <div class="prob-num">03</div>
+        <h3><span data-lang="en" class="active">After-hours calls disappear</span><span data-lang="es">Las llamadas fuera de horario se pierden</span></h3>
+        <p><span data-lang="en" class="active">Legal emergencies, dental pain, and urgent medical needs don't follow business hours. Without after-hours coverage, every evening and weekend call is a permanently lost opportunity.</span><span data-lang="es">Las emergencias legales, el dolor dental y las necesidades médicas urgentes no siguen horarios de oficina. Sin cobertura fuera de horario, cada llamada nocturna o de fin de semana se pierde.</span></p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">04</div>
+        <h3><span data-lang="en" class="active">Intake is inconsistent</span><span data-lang="es">El intake es inconsistente</span></h3>
+        <p><span data-lang="en" class="active">When your front desk is overloaded, intake quality drops. Wrong case info, missed details, unqualified appointments — all of it costs you time and money on the back end.</span><span data-lang="es">Cuando tu recepcionista está saturada, la calidad del intake baja. Información incorrecta, detalles perdidos, citas no calificadas — todo eso te cuesta tiempo y dinero.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section how" id="how">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label"><span data-lang="en" class="active">How It Works</span><span data-lang="es">Cómo Funciona</span></span>
+      <h2 class="s-title"><span data-lang="en" class="active">Four steps. Zero missed clients.</span><span data-lang="es">Cuatro pasos. Cero clientes perdidos.</span></h2>
+      <p class="s-sub"><span data-lang="en" class="active">We plug into your existing phone system in 24 hours. No complicated setup. No disruption to your practice.</span><span data-lang="es">Nos conectamos a tu sistema telefónico existente en 24 horas. Sin configuraciones complicadas. Sin interrupciones a tu práctica.</span></p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3><span data-lang="en" class="active">Client calls your number</span><span data-lang="es">El cliente llama a tu número</span></h3>
+        <p><span data-lang="en" class="active">Your existing phone number stays the same. We configure call forwarding invisibly.</span><span data-lang="es">Tu número de teléfono no cambia. Configuramos el redireccionamiento de llamadas de forma invisible.</span></p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3><span data-lang="en" class="active">We answer in your name</span><span data-lang="es">Contestamos en tu nombre</span></h3>
+        <p><span data-lang="en" class="active">Our bilingual team answers as your office — professionally, in English or Spanish, every time.</span><span data-lang="es">Nuestro equipo bilingüe contesta como tu oficina — con profesionalismo, en inglés o español, siempre.</span></p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3><span data-lang="en" class="active">We qualify &amp; intake</span><span data-lang="es">Calificamos y hacemos el intake</span></h3>
+        <p><span data-lang="en" class="active">We collect case details, insurance info, or appointment needs using your custom intake script.</span><span data-lang="es">Recopilamos detalles del caso, información de seguro o necesidades de cita usando tu guión de intake personalizado.</span></p>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <h3><span data-lang="en" class="active">You get the lead</span><span data-lang="es">Recibes el prospecto</span></h3>
+        <p><span data-lang="en" class="active">Qualified intake delivered instantly — or booked directly onto your calendar.</span><span data-lang="es">El intake calificado se entrega al instante — o se agenda directamente en tu calendario.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label"><span data-lang="en" class="active">Our Services</span><span data-lang="es">Nuestros Servicios</span></span>
+      <h2 class="s-title"><span data-lang="en" class="active">Everything your front office<br>should be doing.</span><span data-lang="es">Todo lo que tu recepción<br>debería estar haciendo.</span></h2>
+      <p class="s-sub"><span data-lang="en" class="active">Every service is bilingual, professional, and built around your specific practice type.</span><span data-lang="es">Cada servicio es bilingüe, profesional y diseñado para tu tipo de práctica específica.</span></p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">📞</div>
+        <h3><span data-lang="en" class="active">Live Bilingual Answering</span><span data-lang="es">Atención Bilingüe en Vivo</span></h3>
+        <p><span data-lang="en" class="active">Real people answering your calls in English and Spanish — sounding exactly like your in-house front desk. No bots. No voicemail.</span><span data-lang="es">Personas reales contestando tus llamadas en inglés y español — sonando exactamente como tu recepción interna. Sin robots. Sin buzón de voz.</span></p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <h3><span data-lang="en" class="active">Client Intake &amp; Qualification</span><span data-lang="es">Intake y Calificación de Clientes</span></h3>
+        <p><span data-lang="en" class="active">We collect everything your team needs — case type, injury details, insurance status — using your custom intake script built specifically for your practice.</span><span data-lang="es">Recopilamos todo lo que tu equipo necesita — tipo de caso, detalles de la lesión, estado del seguro — usando tu guión de intake personalizado.</span></p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📅</div>
+        <h3><span data-lang="en" class="active">Appointment Scheduling</span><span data-lang="es">Agendamiento de Citas</span></h3>
+        <p><span data-lang="en" class="active">We book directly onto your calendar, confirm appointments, and send reminders — reducing no-shows and keeping your schedule consistently full.</span><span data-lang="es">Agendamos directamente en tu calendario, confirmamos citas y enviamos recordatorios — reduciendo ausencias y manteniendo tu agenda llena.</span></p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌙</div>
+        <h3><span data-lang="en" class="active">After-Hours Coverage</span><span data-lang="es">Cobertura Fuera de Horario</span></h3>
+        <p><span data-lang="en" class="active">Legal emergencies, dental pain, urgent care needs — we answer after 5pm, on weekends, and holidays so no client ever reaches a dead end.</span><span data-lang="es">Emergencias legales, dolor dental, necesidades urgentes — contestamos después de las 5pm, fines de semana y festivos para que ningún cliente llegue a un callejón sin salida.</span></p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">💬</div>
+        <h3><span data-lang="en" class="active">Missed-Call Text-Back</span><span data-lang="es">Texto Automático por Llamada Perdida</span></h3>
+        <p><span data-lang="en" class="active">If a call slips through, an automated bilingual text fires within 30 seconds to keep the potential client engaged before they call a competitor.</span><span data-lang="es">Si una llamada se escapa, un texto bilingüe automático se envía en 30 segundos para mantener al cliente potencial comprometido antes de que llame a un competidor.</span></p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3><span data-lang="en" class="active">Weekly Intake Reports</span><span data-lang="es">Reportes Semanales de Intake</span></h3>
+        <p><span data-lang="en" class="active">Full visibility into every call — calls received, clients qualified, appointments booked, and leads delivered. Your data, clearly reported every week.</span><span data-lang="es">Visibilidad total de cada llamada — llamadas recibidas, clientes calificados, citas agendadas y prospectos entregados. Tus datos, reportados claramente cada semana.</span></p>
+      </div>
+      <div class="upsell-card">
+        <span class="upsell-badge"><span data-lang="en" class="active">Premium Add-On</span><span data-lang="es">Servicio Premium</span></span>
+        <div class="upsell-body">
+          <h3><span data-lang="en" class="active">Client Acquisition &amp; Lead Generation</span><span data-lang="es">Adquisición de Clientes y Generación de Prospectos</span></h3>
+          <p><span data-lang="en" class="active">Already handling your intake? We go further. Our team actively reaches Spanish-speaking communities in your area — through targeted outreach and referral networks — delivering qualified potential clients directly to your firm. Available after 90 days as an intake client. Subject to state bar compliance review for law firms.</span><span data-lang="es">¿Ya manejamos tu intake? Vamos más lejos. Nuestro equipo llega activamente a comunidades hispanohablantes en tu área — mediante alcance dirigido y redes de referidos — entregando clientes potenciales calificados directamente a tu firma. Disponible después de 90 días como cliente de intake.</span></p>
+        </div>
+        <div class="upsell-price">
+          <div class="upsell-from"><span data-lang="en" class="active">Starting from</span><span data-lang="es">Desde</span></div>
+          <div class="upsell-num">$1,500<span style="font-size:16px;font-weight:400;color:var(--slate)">/mo</span></div>
+          <div class="upsell-mo"><span data-lang="en" class="active">After 90 days as intake client</span><span data-lang="es">Después de 90 días como cliente</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing" id="pricing">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label"><span data-lang="en" class="active">Pricing</span><span data-lang="es">Precios</span></span>
+      <h2 class="s-title"><span data-lang="en" class="active">Transparent pricing.<br>No surprises.</span><span data-lang="es">Precios transparentes.<br>Sin sorpresas.</span></h2>
+      <p class="s-sub"><span data-lang="en" class="active">No setup fees. No long-term contracts. Cancel anytime. Every plan includes bilingual English and Spanish coverage from day one.</span><span data-lang="es">Sin costo de configuración. Sin contratos a largo plazo. Cancela cuando quieras. Todos los planes incluyen cobertura bilingüe desde el primer día.</span></p>
+    </div>
+    <div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:20px 28px;margin-bottom:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;">
+        <p style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px;font-family:'Syne',sans-serif;"><span data-lang="en" class="active">Why our pricing is different</span><span data-lang="es">Por qué nuestros precios son diferentes</span></p>
+        <p style="font-size:12px;color:var(--slate);line-height:1.6;"><span data-lang="en" class="active">Ruby, Smith.ai, and Nexa all charge <strong style="color:var(--navy);">per minute or per call</strong> — your bill is unpredictable every month and overages stack fast. We charge a flat monthly rate. No per-minute billing. No overage fees within your plan.</span><span data-lang="es">Ruby, Smith.ai y Nexa cobran <strong style="color:var(--navy);">por minuto o por llamada</strong>. Con nosotros pagas una tarifa plana mensual. Sin cobros por minuto. Sin cargos extra dentro de tu plan.</span></p>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;flex-shrink:0;align-items:center;">
+        <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--slate);text-decoration:line-through;">$235+</div><div style="font-size:10px;color:var(--slate);">Ruby</div></div>
+        <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--slate);text-decoration:line-through;">$293+</div><div style="font-size:10px;color:var(--slate);">Smith.ai</div></div>
+        <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--slate);text-decoration:line-through;">$239+</div><div style="font-size:10px;color:var(--slate);">Nexa</div></div>
+        <div style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--green);">Flat</div><div style="font-size:10px;color:var(--green);font-weight:600;">Echoline ✓</div></div>
+      </div>
+    </div>
+        <div class="pricing-grid">
+      <!-- ESSENTIAL -->
+      <div class="pc">
+        <p class="pc-label"><span data-lang="en" class="active">Starter</span><span data-lang="es">Inicial</span></p>
+        <p class="pc-name"><span data-lang="en" class="active">Bilingual Intake</span><span data-lang="es">Intake Bilingüe</span></p>
+        <div class="pc-price"><sup>$</sup>299</div>
+        <p class="pc-per"><span data-lang="en" class="active">flat rate · no per-minute fees · cancel anytime</span><span data-lang="es">tarifa plana · sin cobros por minuto · cancela cuando quieras</span></p>
+        <div class="pc-div"></div>
+        <ul class="pc-feats">
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Live bilingual answering — business hours M–F</span><span data-lang="es">Atención bilingüe en vivo — horario laboral</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">English &amp; Spanish coverage</span><span data-lang="es">Cobertura en inglés y español</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Client intake &amp; qualification</span><span data-lang="es">Intake y calificación de clientes</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Appointment scheduling</span><span data-lang="es">Agendamiento de citas</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Missed-call text-back</span><span data-lang="es">Texto automático por llamada perdida</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Weekly intake report</span><span data-lang="es">Reporte semanal de intake</span></li>
+        </ul>
+        <a href="#contact" class="btn-pc btn-pc-ol"><span data-lang="en" class="active">Get started</span><span data-lang="es">Comenzar</span></a>
+      </div>
+      <!-- PROFESSIONAL -->
+      <div class="pc pop">
+        <div class="pop-badge"><span data-lang="en" class="active">Most Popular</span><span data-lang="es">Más Popular</span></div>
+        <p class="pc-label"><span data-lang="en" class="active">Professional</span><span data-lang="es">Profesional</span></p>
+        <p class="pc-name"><span data-lang="en" class="active">Full Coverage</span><span data-lang="es">Cobertura Completa</span></p>
+        <div class="pc-price"><sup>$</sup>499</div>
+        <p class="pc-per" style="color:var(--slate)"><span data-lang="en" class="active">flat rate · no per-minute fees · cancel anytime</span><span data-lang="es">tarifa plana · sin cobros por minuto · cancela cuando quieras</span></p>
+        <div class="pc-div"></div>
+        <ul class="pc-feats">
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Everything in Starter</span><span data-lang="es">Todo lo del plan Esencial</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">After-hours &amp; weekend coverage</span><span data-lang="es">Cobertura fuera de horario y fines de semana</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Insurance verification questions</span><span data-lang="es">Preguntas de verificación de seguro</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">CRM entry &amp; lead delivery</span><span data-lang="es">Entrada al CRM y entrega de prospectos</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Custom intake scripts per practice</span><span data-lang="es">Guiones de intake personalizados</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Monthly performance review</span><span data-lang="es">Revisión mensual de desempeño</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Priority support</span><span data-lang="es">Soporte prioritario</span></li>
+        </ul>
+        <a href="#contact" class="btn-pc btn-pc-solid"><span data-lang="en" class="active">Get started</span><span data-lang="es">Comenzar</span></a>
+      </div>
+      <!-- ENTERPRISE -->
+      <div class="pc">
+        <p class="pc-label"><span data-lang="en" class="active">Premium</span><span data-lang="es">Premium</span></p>
+        <p class="pc-name"><span data-lang="en" class="active">24/7 Coverage</span><span data-lang="es">Cobertura 24/7</span></p>
+        <div class="pc-price"><sup>$</sup>699</div>
+        <p class="pc-per"><span data-lang="en" class="active">flat rate · no per-minute fees · cancel anytime</span><span data-lang="es">tarifa plana · sin cobros por minuto · cancela cuando quieras</span></p>
+        <div class="pc-div"></div>
+        <ul class="pc-feats">
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Everything in Professional</span><span data-lang="es">Todo lo del plan Profesional</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Multiple location support</span><span data-lang="es">Soporte para múltiples ubicaciones</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Dedicated account manager</span><span data-lang="es">Gerente de cuenta dedicado</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Lead generation add-on eligible</span><span data-lang="es">Elegible para generación de prospectos</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Full CRM management</span><span data-lang="es">Gestión completa del CRM</span></li>
+          <li><span class="ck">✓</span><span data-lang="en" class="active">Quarterly strategy review</span><span data-lang="es">Revisión trimestral de estrategia</span></li>
+        </ul>
+        <a href="#contact" class="btn-pc btn-pc-ol"><span data-lang="en" class="active">Get started</span><span data-lang="es">Comenzar</span></a>
+      </div>
+    </div>
+    <!-- DOWNSELL -->
+    <div class="downsell">
+      <div class="downsell-l">
+        <h4><span data-lang="en" class="active">Not ready to commit yet?</span><span data-lang="es">¿Aún no listo para cobertura completa?</span></h4>
+        <p><span data-lang="en" class="active">Start with automated bilingual text-back only. Every missed call triggers an immediate English or Spanish text — keeping potential clients engaged before they call your competitor.</span><span data-lang="es">Comienza solo con el texto bilingüe automático. Cada llamada perdida activa un texto inmediato en inglés o español — manteniendo a los clientes potenciales comprometidos antes de que llamen a tu competidor.</span></p>
+      </div>
+      <div style="flex-shrink:0;">
+        <div class="downsell-price">$99<span style="font-size:14px;font-weight:400;color:var(--slate)">/mo</span></div>
+        <a href="#contact" class="btn-pc btn-pc-ol" style="margin-top:10px;display:block;text-align:center;min-width:130px;"><span data-lang="en" class="active">Start here</span><span data-lang="es">Comenzar aquí</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why" id="why">
+  <div class="mw">
+    <div class="why-grid">
+      <div>
+        <span class="s-label"><span data-lang="en" class="active">Why Echoline</span><span data-lang="es">Por Qué Echoline</span></span>
+        <h2 class="s-title" style="margin-bottom:14px;"><span data-lang="en" class="active">Not your average<br>answering service.</span><span data-lang="es">No somos un servicio<br>de contestación promedio.</span></h2>
+        <p class="s-sub" style="margin-bottom:32px;"><span data-lang="en" class="active">We come from the legal services world. We understand compliance, intake quality, and what it means to handle sensitive client information with professionalism.</span><span data-lang="es">Venimos del mundo de los servicios legales. Entendemos el cumplimiento, la calidad del intake y lo que significa manejar información sensible de clientes con profesionalismo.</span></p>
+        <div class="why-feats">
+          <div class="why-feat">
+            <div class="why-feat-icon">🏛️</div>
+            <div>
+              <h3><span data-lang="en" class="active">Legal &amp; Medical Intake Background</span><span data-lang="es">Experiencia en Intake Legal y Médico</span></h3>
+              <p><span data-lang="en" class="active">Our team comes from high-compliance legal services environments. We handle sensitive intake carefully, professionally, and accurately — every time.</span><span data-lang="es">Nuestro equipo proviene de entornos de servicios legales de alto cumplimiento. Manejamos el intake sensible con cuidado, profesionalismo y precisión.</span></p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🌎</div>
+            <div>
+              <h3><span data-lang="en" class="active">Bilingual Is Our Core — Not an Add-On</span><span data-lang="es">Lo Bilingüe Es Nuestro Core — No un Extra</span></h3>
+              <p><span data-lang="en" class="active">Every plan includes full English and Spanish coverage. We don't upsell you on basic bilingual access — it's standard because your clients deserve it.</span><span data-lang="es">Todos los planes incluyen cobertura completa en inglés y español. No te cobramos extra por el acceso bilingüe básico — es estándar porque tus clientes lo merecen.</span></p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">📋</div>
+            <div>
+              <h3><span data-lang="en" class="active">Custom Scripts for Your Practice</span><span data-lang="es">Guiones Personalizados para Tu Práctica</span></h3>
+              <p><span data-lang="en" class="active">We don't use generic scripts. We build intake flows specific to your practice type so every intake is accurate and professional.</span><span data-lang="es">No usamos guiones genéricos. Construimos flujos de intake específicos para tu tipo de práctica para que cada intake sea preciso y profesional.</span></p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🔒</div>
+            <div>
+              <h3><span data-lang="en" class="active">HIPAA-Aware Protocols</span><span data-lang="es">Protocolos con Conciencia HIPAA</span></h3>
+              <p><span data-lang="en" class="active">We understand the sensitivity of medical and legal information. Our intake protocols are designed with privacy compliance in mind from day one.</span><span data-lang="es">Entendemos la sensibilidad de la información médica y legal. Nuestros protocolos de intake están diseñados con el cumplimiento de privacidad en mente desde el primer día.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-vis">
+        <div class="why-vis-bg"></div>
+        <p class="why-vis-label"><span data-lang="en" class="active">Live Intake Dashboard — Today</span><span data-lang="es">Panel de Intake en Vivo — Hoy</span></p>
+        <div class="intake-card">
+          <div class="intake-row">
+            <span class="intake-name">Carlos M. · Personal Injury</span>
+            <span class="intake-badge b-pi">Urgent</span>
+          </div>
+          <p class="intake-detail"><span data-lang="en" class="active">Car accident 3 days ago. Spanish-speaking. Insurance collected. Attorney consult booked: Tomorrow 10am ✓</span><span data-lang="es">Accidente de auto hace 3 días. Hispanohablante. Seguro recopilado. Consulta con abogado: Mañana 10am ✓</span></p>
+        </div>
+        <div class="intake-card">
+          <div class="intake-row">
+            <span class="intake-name">Ana L. · Immigration</span>
+            <span class="intake-badge b-imm">Qualified</span>
+          </div>
+          <p class="intake-detail"><span data-lang="en" class="active">DACA renewal inquiry. Full intake in Spanish. Case file created. Consultation: Friday 2pm ✓</span><span data-lang="es">Consulta de renovación DACA. Intake completo en español. Expediente creado. Consulta: Viernes 2pm ✓</span></p>
+        </div>
+        <div class="intake-card">
+          <div class="intake-row">
+            <span class="intake-name">Rosa T. · New Dental Patient</span>
+            <span class="intake-badge b-fam">Scheduled</span>
+          </div>
+          <p class="intake-detail"><span data-lang="en" class="active">New patient, Spanish-speaking. Insurance verified. Appointment booked: Thursday 9am ✓</span><span data-lang="es">Paciente nueva, hispanohablante. Seguro verificado. Cita agendada: Jueves 9am ✓</span></p>
+        </div>
+        <div class="why-nums">
+          <div class="why-num"><div class="why-num-n">18</div><div class="why-num-l"><span data-lang="en" class="active">Calls today</span><span data-lang="es">Llamadas hoy</span></div></div>
+          <div class="why-num"><div class="why-num-n">14</div><div class="why-num-l"><span data-lang="en" class="active">Qualified</span><span data-lang="es">Calificados</span></div></div>
+          <div class="why-num"><div class="why-num-n">11</div><div class="why-num-l"><span data-lang="en" class="active">Booked</span><span data-lang="es">Agendados</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial" id="testimonial">
+  <div class="mw">
+    <span class="s-label" style="display:block;text-align:center;"><span data-lang="en" class="active">What Our Clients Say</span><span data-lang="es">Lo Que Dicen Nuestros Clientes</span></span>
+    <h2 class="s-title" style="color:#fff;text-align:center;"><span data-lang="en" class="active">Real results for real practices.</span><span data-lang="es">Resultados reales para prácticas reales.</span></h2>
+    <div class="quote-wrap">
+      <span class="quote-mark">"</span>
+      <p class="quote-text"><span data-lang="en" class="active">We were losing Spanish-speaking personal injury clients every week because no one could handle the call properly. Echoline changed that immediately. Within the first month we had 6 new qualified consultations we would have missed.</span><span data-lang="es">Perdíamos clientes hispanohablantes de lesiones personales cada semana porque nadie podía manejar la llamada correctamente. Echoline cambió eso de inmediato. En el primer mes tuvimos 6 nuevas consultas calificadas que habríamos perdido.</span></p>
+      <p class="quote-src"><strong>David R., Esq.</strong> · <span data-lang="en" class="active">Personal Injury Law Firm · California</span><span data-lang="es">Bufete de Lesiones Personales · California</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label">FAQ</span>
+      <h2 class="s-title"><span data-lang="en" class="active">Common questions.</span><span data-lang="es">Preguntas frecuentes.</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q"><span data-lang="en" class="active">Is there a long-term contract?</span><span data-lang="es">¿Hay un contrato a largo plazo?</span></div>
+        <div class="faq-a"><span data-lang="en" class="active">No. All plans are month-to-month. We earn your business every month by delivering qualified intake and real results. Cancel anytime with no penalty or fees.</span><span data-lang="es">No. Todos los planes son mes a mes. Ganamos tu negocio cada mes entregando intake calificado y resultados reales. Cancela en cualquier momento sin penalización.</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span data-lang="en" class="active">Will you answer as our firm or as Echoline?</span><span data-lang="es">¿Contestarán como nuestra firma o como Echoline?</span></div>
+        <div class="faq-a"><span data-lang="en" class="active">We always answer in your firm or practice name. Clients have no idea they're speaking with a third-party intake team. It sounds exactly like your in-house front desk — in both English and Spanish.</span><span data-lang="es">Siempre contestamos con el nombre de tu firma o práctica. Los clientes no saben que están hablando con un equipo externo. Suena exactamente como tu recepción interna — en inglés y español.</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span data-lang="en" class="active">How quickly can you get us set up?</span><span data-lang="es">¿Qué tan rápido pueden configurarnos?</span></div>
+        <div class="faq-a"><span data-lang="en" class="active">Most clients are live within 24 hours. We configure your intake script, set up call forwarding, and connect your calendar — all before your next business day.</span><span data-lang="es">La mayoría de los clientes están en funcionamiento en 24 horas. Configuramos tu guión de intake, el redireccionamiento de llamadas y conectamos tu calendario — todo antes de tu próximo día hábil.</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span data-lang="en" class="active">Are you HIPAA compliant?</span><span data-lang="es">¿Son compatibles con HIPAA?</span></div>
+        <div class="faq-a"><span data-lang="en" class="active">We operate with HIPAA-aware intake protocols and handle all patient and client information with strict confidentiality. We recommend discussing your specific compliance requirements during your consultation.</span><span data-lang="es">Operamos con protocolos de intake con conciencia HIPAA y manejamos toda la información de pacientes y clientes con estricta confidencialidad. Recomendamos discutir tus requisitos específicos de cumplimiento durante tu consulta.</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span data-lang="en" class="active">What is the lead generation add-on?</span><span data-lang="es">¿Qué es el servicio de generación de prospectos?</span></div>
+        <div class="faq-a"><span data-lang="en" class="active">After 90 days as an intake client, you become eligible for our lead generation service. We actively reach Spanish-speaking communities in your area and deliver qualified potential clients directly to your practice for a flat monthly fee. Subject to state bar compliance review for law firms.</span><span data-lang="es">Después de 90 días como cliente de intake, eres elegible para nuestro servicio de generación de prospectos. Llegamos activamente a comunidades hispanohablantes en tu área y entregamos clientes potenciales calificados directamente a tu práctica por una tarifa mensual fija.</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span data-lang="en" class="active">What systems do you integrate with?</span><span data-lang="es">¿Con qué sistemas se integran?</span></div>
+        <div class="faq-a"><span data-lang="en" class="active">We integrate with most major systems including Clio, MyCase, Dentrix, Eaglesoft, and general calendaring tools like Google Calendar and Outlook. Ask us about your specific system during the consultation.</span><span data-lang="es">Nos integramos con la mayoría de los sistemas principales incluyendo Clio, MyCase, Dentrix, Eaglesoft y herramientas de calendario como Google Calendar y Outlook. Pregúntanos sobre tu sistema específico durante la consulta.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2><span data-lang="en" class="active">Your next client is<br>calling right now.</span><span data-lang="es">Tu próximo cliente<br>está llamando ahora mismo.</span></h2>
+  <p><span data-lang="en" class="active">Don't let a language barrier or a missed call send them to your competitor.</span><span data-lang="es">No dejes que una barrera idiomática o una llamada perdida los envíe a tu competidor.</span></p>
+  <div class="cta-btns">
+    <a href="#contact" class="btn-main"><span data-lang="en" class="active">Book a Free Consultation →</span><span data-lang="es">Agenda una Consulta Gratis →</span></a>
+    <a href="mailto:info@echolinesolutions.com" class="btn-outline-white"><span data-lang="en" class="active">Email us instead</span><span data-lang="es">Envíanos un correo</span></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="mw">
+    <div class="s-head">
+      <span class="s-label"><span data-lang="en" class="active">Get Started</span><span data-lang="es">Comenzar</span></span>
+      <h2 class="s-title"><span data-lang="en" class="active">Let's talk about<br>your practice.</span><span data-lang="es">Hablemos sobre<br>tu práctica.</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="ci">
+        <h3><span data-lang="en" class="active">Book a free 20-minute consultation.</span><span data-lang="es">Agenda una consulta gratuita de 20 minutos.</span></h3>
+        <p><span data-lang="en" class="active">We'll walk you through how Echoline works, answer your questions, and put together a plan specific to your practice type, call volume, and bilingual needs — with no commitment required.</span><span data-lang="es">Te explicaremos cómo funciona Echoline, responderemos tus preguntas y crearemos un plan específico para tu tipo de práctica, volumen de llamadas y necesidades bilingües — sin compromiso.</span></p>
+        <div class="ci-item"><div class="ci-icon">📧</div><div class="ci-text"><strong>Email</strong>info@echolinesolutions.com</div></div>
+        <div class="ci-item"><div class="ci-icon">🌐</div><div class="ci-text"><strong>Website</strong>echolinesolutions.com</div></div>
+        <div class="ci-item"><div class="ci-icon">⚡</div><div class="ci-text"><strong><span data-lang="en" class="active">Response time</span><span data-lang="es">Tiempo de respuesta</span></strong><span data-lang="en" class="active">Within one business day</span><span data-lang="es">En un día hábil</span></div></div>
+        <div class="ci-item"><div class="ci-icon">🌎</div><div class="ci-text"><strong><span data-lang="en" class="active">Languages</span><span data-lang="es">Idiomas</span></strong>English &amp; Español</div></div>
+      </div>
+      <div>
+        <form class="form" action="https://formspree.io/f/mojbyyvb" method="POST">
+          <p class="form-title"><span data-lang="en" class="active">Send us a message</span><span data-lang="es">Envíanos un mensaje</span></p>
+          <p class="form-sub"><span data-lang="en" class="active">We'll respond within one business day.</span><span data-lang="es">Responderemos en un día hábil.</span></p>
+          <div class="f2">
+            <div class="fg">
+              <label class="fl"><span data-lang="en" class="active">First Name</span><span data-lang="es">Nombre</span></label>
+              <input class="fi" type="text" name="first_name" placeholder="Jane" required>
+            </div>
+            <div class="fg">
+              <label class="fl"><span data-lang="en" class="active">Last Name</span><span data-lang="es">Apellido</span></label>
+              <input class="fi" type="text" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl"><span data-lang="en" class="active">Firm / Practice Name</span><span data-lang="es">Nombre del Bufete / Práctica</span></label>
+            <input class="fi" type="text" name="firm_name" placeholder="Smith Law Group" required>
+          </div>
+          <div class="fg">
+            <label class="fl"><span data-lang="en" class="active">Practice Type</span><span data-lang="es">Tipo de Práctica</span></label>
+            <select class="fs" name="practice_type">
+              <option value=""><span data-lang="en" class="active">Select your practice...</span></option>
+              <option>Law Firm — Personal Injury</option>
+              <option>Law Firm — Immigration</option>
+              <option>Law Firm — Family Law</option>
+              <option>Law Firm — Criminal Defense</option>
+              <option>Law Firm — Other</option>
+              <option>Dental Office</option>
+              <option>Medical Clinic / Urgent Care</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Email</label>
+            <input class="fi" type="email" name="email" placeholder="jane@smithlawgroup.com" required>
+          </div>
+          <div class="fg">
+            <label class="fl"><span data-lang="en" class="active">Phone</span><span data-lang="es">Teléfono</span></label>
+            <input class="fi" type="tel" name="phone" placeholder="(555) 000-0000">
+          </div>
+          <div class="fg">
+            <label class="fl"><span data-lang="en" class="active">Plan of Interest</span><span data-lang="es">Plan de Interés</span></label>
+            <select class="fs" name="plan">
+              <option value=""><span data-lang="en" class="active">Select a plan...</span><span data-lang="es">Selecciona un plan...</span></option>
+              <option>Starter — $299/month</option>
+              <option>Professional — $499/month (Most Popular)</option>
+              <option>Premium 24/7 — $699/month</option>
+              <option>Text-Back Automation Only — $99/month</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl"><span data-lang="en" class="active">Tell us about your practice (optional)</span><span data-lang="es">Cuéntanos sobre tu práctica (opcional)</span></label>
+            <textarea class="ft" name="message" placeholder="How many inbound calls per week? Do you have bilingual staff? What's your service area?"></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New Echoline Solutions Inquiry">
+          <button type="submit" class="btn-submit"><span data-lang="en" class="active">Send Message →</span><span data-lang="es">Enviar Mensaje →</span></button>
+          <p class="form-note"><span data-lang="en" class="active">No commitment required. We'll reach out within one business day.</span><span data-lang="es">Sin compromiso. Nos comunicaremos en un día hábil.</span></p>
+          <div class="success-msg" id="success-msg">✓ <span data-lang="en" class="active">Message sent! We'll be in touch within one business day.</span><span data-lang="es">¡Mensaje enviado! Nos comunicaremos en un día hábil.</span></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="mw">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
+          <div style="width:28px;height:28px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:13px;">⚖️</div>
+          <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;">echoline solutions</span>
+        </div>
+        <p><span data-lang="en" class="active">Bilingual virtual receptionist and client intake for law firms, dental offices, and medical clinics. English and Spanish on every plan.</span><span data-lang="es">Recepcionista virtual bilingüe e intake de clientes para bufetes, consultorios dentales y clínicas médicas. Inglés y español en todos los planes.</span></p>
+      </div>
+      <div class="ft-col">
+        <h4><span data-lang="en" class="active">Services</span><span data-lang="es">Servicios</span></h4>
+        <a href="#services"><span data-lang="en" class="active">Live Bilingual Answering</span><span data-lang="es">Atención Bilingüe en Vivo</span></a>
+        <a href="#services"><span data-lang="en" class="active">Client Intake</span><span data-lang="es">Intake de Clientes</span></a>
+        <a href="#services"><span data-lang="en" class="active">Appointment Scheduling</span><span data-lang="es">Agendamiento de Citas</span></a>
+        <a href="#services"><span data-lang="en" class="active">After-Hours Coverage</span><span data-lang="es">Cobertura Fuera de Horario</span></a>
+        <a href="#services"><span data-lang="en" class="active">Lead Generation</span><span data-lang="es">Generación de Prospectos</span></a>
+      </div>
+      <div class="ft-col">
+        <h4><span data-lang="en" class="active">Company</span><span data-lang="es">Empresa</span></h4>
+        <a href="#serve"><span data-lang="en" class="active">Who We Serve</span><span data-lang="es">A Quién Servimos</span></a>
+        <a href="#how"><span data-lang="en" class="active">How It Works</span><span data-lang="es">Cómo Funciona</span></a>
+        <a href="#pricing"><span data-lang="en" class="active">Pricing</span><span data-lang="es">Precios</span></a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="ft-col">
+        <h4><span data-lang="en" class="active">Contact</span><span data-lang="es">Contacto</span></h4>
+        <a href="mailto:info@echolinesolutions.com">info@echolinesolutions.com</a>
+        <a href="#contact"><span data-lang="en" class="active">Book a Consultation</span><span data-lang="es">Agenda una Consulta</span></a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>© 2025 Echoline Solutions. <span data-lang="en" class="active">All rights reserved.</span><span data-lang="es">Todos los derechos reservados.</span></p>
+      <div style="display:flex;gap:16px;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Language toggle
+function setLang(lang){
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.classList.toggle('active', el.getAttribute('data-lang')===lang);
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+  document.documentElement.lang = lang;
+  localStorage.setItem('echoline-lang', lang);
+}
+
+// Restore saved language
+const savedLang = localStorage.getItem('echoline-lang');
+if(savedLang && savedLang !== 'en') setLang(savedLang);
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// Scroll animations
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.serve-card,.svc-card,.pc,.why-feat,.intake-card,.prob-card,.step,.upsell-card').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='opacity .6s ease,transform .6s ease';
+  observer.observe(el);
+});
+
+// Nav active state on scroll
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY+100;
+  sections.forEach(s=>{
+    if(y>=s.offsetTop && y<s.offsetTop+s.offsetHeight){
+      document.querySelectorAll('.nav-link-item').forEach(a=>a.style.color='');
+      const link=document.querySelector(`.nav-link-item[href="#${s.id}"]`);
+      if(link) link.style.color='#fff';
+    }
+  });
+});
+</script>
+</body>
+</html>
