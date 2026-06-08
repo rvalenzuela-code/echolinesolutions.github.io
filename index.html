@@ -330,7 +330,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
     <button class="active" onclick="setLang('en')">EN</button>
     <button onclick="setLang('es')">ES</button>
   </div>
-  <button class="nav-cta" onclick="scrollTo('contact')"><span data-en>Get Started</span><span data-es>Comenzar</span></button>
+  <button class="nav-cta" onclick="goTo('contact')"><span data-en>Get Started</span><span data-es>Comenzar</span></button>
 </div>
 </nav>
 
@@ -523,7 +523,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
         <li data-en>Missed-call text-back</li><li data-es>Texto automático por llamada perdida</li>
         <li data-en>Weekly intake report</li><li data-es>Reporte semanal de intake</li>
       </ul>
-      <button class="pcta o" onclick="scrollTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
+      <button class="pcta o" onclick="goTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
     </div>
     <div class="plan feat">
       <div class="plan-badge" data-en>Most Popular · Más Popular</div>
@@ -540,7 +540,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
         <li data-en>Monthly performance review</li><li data-es>Revisión mensual de desempeño</li>
         <li data-en>Priority support</li><li data-es>Soporte prioritario</li>
       </ul>
-      <button class="pcta p" onclick="scrollTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
+      <button class="pcta p" onclick="goTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
     </div>
     <div class="plan">
       <div class="plan-name">Premium</div>
@@ -555,12 +555,12 @@ body.en span[data-en],body.en a[data-en]{display:inline}
         <li data-en>Full CRM management</li><li data-es>Gestión completa del CRM</li>
         <li data-en>Quarterly strategy review</li><li data-es>Revisión trimestral de estrategia</li>
       </ul>
-      <button class="pcta o" onclick="scrollTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
+      <button class="pcta o" onclick="goTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
     </div>
   </div>
   <div class="textback">
     <div><h4 data-en>Not ready for full coverage yet?</h4><h4 data-es>¿Aún no listo para cobertura completa?</h4><p data-en>Start with automated bilingual text-back only. Every missed call triggers an immediate English or Spanish text — keeping potential clients engaged before they call your competitor.</p><p data-es>Comienza solo con el texto bilingüe automático. Cada llamada perdida activa un texto inmediato en inglés o español.</p></div>
-    <div class="tb-price" style="text-align:center;flex-shrink:0"><div class="amt">$99</div><div class="per">/mo</div><button class="pcta o" style="margin-top:10px;width:120px" onclick="scrollTo('contact')"><span data-en>Start here</span><span data-es>Comenzar</span></button></div>
+    <div class="tb-price" style="text-align:center;flex-shrink:0"><div class="amt">$99</div><div class="per">/mo</div><button class="pcta o" style="margin-top:10px;width:120px" onclick="goTo('contact')"><span data-en>Start here</span><span data-es>Comenzar</span></button></div>
   </div>
 </div>
 </section>
@@ -619,7 +619,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   <p data-en>Don't let a language barrier or a missed call send them to your competitor.</p>
   <p data-es>No dejes que una barrera idiomática o una llamada perdida los envíe a tu competidor.</p>
   <div class="cta-btns">
-    <button class="btn-w" onclick="scrollTo('contact')"><span data-en>Book a Free Consultation →</span><span data-es>Agenda una Consulta Gratis →</span></button>
+    <button class="btn-w" onclick="goTo('contact')"><span data-en>Book a Free Consultation →</span><span data-es>Agenda una Consulta Gratis →</span></button>
     <a href="mailto:info@echolinesolutions.com" class="btn-ow"><span data-en>Email us instead</span><span data-es>Envíanos un correo</span></a>
   </div>
 </div>
@@ -647,7 +647,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
         <div class="ftitle" data-es>Agenda una consulta gratuita de 20 minutos.</div>
         <div class="fsub" data-en>We'll respond within one business day.</div>
         <div class="fsub" data-es>Responderemos en un día hábil.</div>
-        <form id="cform" action="https://formspree.io/f/mojbyyvb" method="POST" onsubmit="submit(event)">
+        <form id="cform" action="https://formspree.io/f/mojbyyvb" method="POST" onsubmit="handleSubmit(event)">
           <div class="frow">
             <div class="fg"><label data-en>First Name</label><label data-es>Nombre</label><input type="text" name="first_name" required/></div>
             <div class="fg"><label data-en>Last Name</label><label data-es>Apellido</label><input type="text" name="last_name" required/></div>
@@ -744,21 +744,24 @@ function setLang(l){
   document.body.className=l;
   document.querySelectorAll('.lang-toggle button').forEach((b,i)=>b.classList.toggle('active',(l==='en'&&i===0)||(l==='es'&&i===1)));
 }
-function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function goTo(id){
+  var el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth'});
+}
 function faq(btn){
-  const item=btn.closest('.faq-item'),open=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  var item=btn.closest('.faq-item'),open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
   if(!open)item.classList.add('open');
 }
-async function submit(e){
+async function handleSubmit(e){
   e.preventDefault();
-  const f=e.target,b=f.querySelector('.fsub-btn');
+  var f=e.target,b=f.querySelector('.fsub-btn');
   b.textContent='Sending...';b.disabled=true;
   try{
-    const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    var r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
     if(r.ok){document.getElementById('fcard').style.display='none';document.getElementById('fsuccess').style.display='block';}
     else{b.textContent='Try again';b.disabled=false;}
-  }catch{b.textContent='Try again';b.disabled=false;}
+  }catch(err){b.textContent='Try again';b.disabled=false;}
 }
 setLang('en');
 </script>
