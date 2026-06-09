@@ -54,28 +54,18 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-
 .hstat-val em{font-style:normal;color:#60A5FA}
 .hstat-lbl{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
 
-/* DASHBOARD */
-.dash{background:var(--white);border-radius:var(--r-xl);box-shadow:var(--sh-lg);overflow:hidden}
-.dash-hdr{background:var(--navy);padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.dash-hdr-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
-.dash-live{display:flex;align-items:center;gap:6px;font-size:12px;color:#6EE7B7;font-weight:500}
-.dash-live::before{content:'';width:7px;height:7px;border-radius:50%;background:#6EE7B7;animation:pulse 1.5s ease infinite}
-.dash-stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--g100)}
-.dstat{padding:14px 16px;text-align:center}
-.dstat+.dstat{border-left:1px solid var(--g100)}
-.dstat-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--navy)}
-.dstat-lbl{font-size:11px;color:var(--g400);margin-top:2px}
-.dash-leads{padding:12px;display:flex;flex-direction:column;gap:8px}
-.dlead{display:flex;align-items:flex-start;gap:10px;background:var(--off);border-radius:var(--r-md);padding:12px 14px}
-.dlead-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
-.dot-red{background:#EF4444}.dot-blue{background:var(--blue)}.dot-green{background:var(--green)}
-.dlead-name{font-size:13px;font-weight:600;color:var(--g900)}
-.dbadge{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;margin-left:6px;vertical-align:middle}
-.dbadge-red{background:#FEE2E2;color:#DC2626}
-.dbadge-blue{background:var(--blue-pale);color:var(--blue)}
-.dbadge-green{background:var(--green-lt);color:var(--green)}
-.dlead-text{font-size:12px;color:var(--g500);margin-top:2px;line-height:1.5}
-.dash-foot{padding:10px 16px;border-top:1px solid var(--g100);text-align:center;font-size:11px;color:var(--g400)}
+/* HERO VALUE CARD */
+.hero-value-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-xl);padding:32px 28px}
+.hvc-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#60A5FA;margin-bottom:20px}
+.hvc-items{display:flex;flex-direction:column;gap:14px}
+.hvc-item{display:flex;align-items:flex-start;gap:12px}
+.hvc-icon{width:36px;height:36px;flex-shrink:0;background:rgba(37,99,235,.2);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:16px}
+.hvc-label{font-size:14px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.3}
+.hvc-sub{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px}
+.hvc-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:6px 0}
+.hvc-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:4px}
+.hvc-bottom-label{font-size:12px;color:rgba(255,255,255,.45)}
+.hvc-bottom-val{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--white)}
 
 /* TICKER */
 .ticker{background:var(--blue);padding:10px 0;overflow:hidden}
@@ -165,7 +155,7 @@ section{padding:96px 24px}
 .ctype{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px}
 .citem.comp .ctype{background:var(--amber-lt);color:var(--amber)}
 .citem.ech .ctype{background:var(--green-lt);color:var(--green)}
-.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .plan{background:var(--white);border:1px solid var(--g100);border-radius:var(--r-xl);padding:32px 28px;position:relative;transition:box-shadow .2s}
 .plan:hover{box-shadow:var(--sh-md)}
 .plan.feat{border-color:var(--blue);border-width:2px;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
@@ -183,11 +173,7 @@ section{padding:96px 24px}
 .pcta.p:hover{background:var(--navy-deep)}
 .pcta.o{background:transparent;color:var(--navy);border:1.5px solid var(--g200)}
 .pcta.o:hover{border-color:var(--navy);background:var(--off)}
-.textback{margin-top:24px;background:var(--white);border:1px solid var(--g100);border-radius:var(--r-lg);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.textback h4{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:6px}
-.textback p{font-size:14px;color:var(--g500);line-height:1.6;max-width:520px}
-.tb-price .amt{font-family:var(--serif);font-size:32px;font-weight:800;color:var(--navy)}
-.tb-price .per{font-size:12px;color:var(--g400)}
+
 
 /* WHY */
 .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
@@ -197,14 +183,16 @@ section{padding:96px 24px}
 .wcard h3 small{font-size:12px;font-weight:400;color:var(--g400);display:block;margin-top:1px}
 .wcard p{font-size:13px;color:var(--g500);line-height:1.7}
 
-/* TESTIMONIAL */
-.testi{background:var(--navy-deep);padding:80px 24px}
-.testi-inner{max-width:760px;margin:0 auto;text-align:center}
-.testi-quote{font-family:var(--serif);font-size:80px;color:rgba(37,99,235,.4);line-height:.6;margin-bottom:20px}
-.testi-text{font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);font-weight:700;color:var(--white);line-height:1.5;margin-bottom:8px}
-.testi-sub{font-size:clamp(14px,1.8vw,17px);color:rgba(255,255,255,.28);font-style:italic;margin-bottom:28px;line-height:1.6}
-.testi-author{font-size:14px;font-weight:600;color:#93C5FD}
-.testi-role{font-size:13px;color:rgba(255,255,255,.4);margin-top:4px}
+/* FOUNDING OFFER */
+.founding{background:var(--navy-deep);padding:80px 24px}
+.founding-inner{max-width:800px;margin:0 auto;text-align:center}
+.founding-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);border-radius:20px;padding:6px 16px;margin-bottom:24px;font-size:12px;font-weight:600;color:#93C5FD;letter-spacing:.06em;text-transform:uppercase}
+.founding h2{font-family:var(--serif);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:var(--white);line-height:1.2;margin-bottom:14px}
+.founding h2 em{font-style:normal;color:#60A5FA}
+.founding p{font-size:16px;color:rgba(255,255,255,.6);line-height:1.75;max-width:580px;margin:0 auto 32px}
+.founding-perks{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:36px}
+.fperk{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.75);font-weight:500}
+.fperk::before{content:'✓';color:#60A5FA;font-weight:700}
 
 /* FAQ */
 .faq{background:var(--off)}
@@ -288,7 +276,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   .serve-grid,.svc-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr)}
   .steps::before{display:none}
-  .plan-grid{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:repeat(2,1fr)}
   .prob-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -303,6 +291,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   .hero-stats{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr}
+  .founding-perks{flex-direction:column;align-items:center;gap:16px}
 }
 </style>
 </head>
@@ -357,23 +347,53 @@ body.en span[data-en],body.en a[data-en]{display:inline}
     </div>
   </div>
   <div class="hero-right">
-    <div class="dash">
-      <div class="dash-hdr">
-        <span class="dash-hdr-title" data-en>Live Intake Dashboard — Today</span><span class="dash-hdr-title" data-es>Panel de Intake en Vivo — Hoy</span>
-        <span class="dash-live">Live</span>
+    <div class="hero-value-card">
+      <div class="hvc-title" data-en>What Echoline handles for you</div>
+      <div class="hvc-title" data-es>Lo que Echoline maneja por ti</div>
+      <div class="hvc-items">
+        <div class="hvc-item">
+          <div class="hvc-icon">📞</div>
+          <div>
+            <div class="hvc-label" data-en>Every call answered in English or Spanish</div>
+            <div class="hvc-label" data-es>Cada llamada atendida en inglés o español</div>
+            <div class="hvc-sub" data-en>Business hours, after-hours, and weekends — depending on your plan</div>
+            <div class="hvc-sub" data-es>Horario laboral, fuera de horario y fines de semana — según tu plan</div>
+          </div>
+        </div>
+        <div class="hvc-item">
+          <div class="hvc-icon">📋</div>
+          <div>
+            <div class="hvc-label" data-en>Intake completed using your custom script</div>
+            <div class="hvc-label" data-es>Intake completado con tu guión personalizado</div>
+            <div class="hvc-sub" data-en>Built for your practice type — not a generic form</div>
+            <div class="hvc-sub" data-es>Construido para tu tipo de práctica, no un formulario genérico</div>
+          </div>
+        </div>
+        <div class="hvc-item">
+          <div class="hvc-icon">📅</div>
+          <div>
+            <div class="hvc-label" data-en>Appointments booked directly onto your calendar</div>
+            <div class="hvc-label" data-es>Citas agendadas directamente en tu calendario</div>
+            <div class="hvc-sub" data-en>No messages to call back. No leads sitting in a queue.</div>
+            <div class="hvc-sub" data-es>Sin mensajes pendientes. Sin prospectos en espera.</div>
+          </div>
+        </div>
+        <div class="hvc-item">
+          <div class="hvc-icon">💬</div>
+          <div>
+            <div class="hvc-label" data-en>Missed call? Bilingual text-back in 30 seconds</div>
+            <div class="hvc-label" data-es>¿Llamada perdida? Texto bilingüe en 30 segundos</div>
+            <div class="hvc-sub" data-en>Keeps the caller engaged before they dial your competitor</div>
+            <div class="hvc-sub" data-es>Mantiene al cliente antes de que llame a tu competidor</div>
+          </div>
+        </div>
+        <hr class="hvc-divider"/>
+        <div class="hvc-bottom">
+          <span class="hvc-bottom-label" data-en>Starting from</span>
+          <span class="hvc-bottom-label" data-es>Desde</span>
+          <span class="hvc-bottom-val">$99<span style="font-size:14px;font-weight:400;color:rgba(255,255,255,.45)">/mo</span></span>
+        </div>
       </div>
-      <div class="dash-stats">
-        <div class="dstat"><div class="dstat-val">18</div><div class="dstat-lbl" data-en>Calls today</div><div class="dstat-lbl" data-es>Llamadas hoy</div></div>
-        <div class="dstat"><div class="dstat-val">14</div><div class="dstat-lbl" data-en>Qualified</div><div class="dstat-lbl" data-es>Calificados</div></div>
-        <div class="dstat"><div class="dstat-val">11</div><div class="dstat-lbl" data-en>Booked</div><div class="dstat-lbl" data-es>Agendados</div></div>
-      </div>
-      <div class="dash-leads">
-        <div class="dlead"><div class="dlead-dot dot-red"></div><div><div class="dlead-name">Carlos M. · Personal Injury <span class="dbadge dbadge-red" data-en>Urgent</span><span class="dbadge dbadge-red" data-es>Urgente</span></div><div class="dlead-text" data-en>Car accident 3 days ago. Spanish-speaking. Insurance collected. Consult: Tomorrow 10am ✓</div><div class="dlead-text" data-es>Accidente hace 3 días. Hispanohablante. Seguro recopilado. Consulta: Mañana 10am ✓</div></div></div>
-        <div class="dlead"><div class="dlead-dot dot-blue"></div><div><div class="dlead-name">Ana L. · Immigration <span class="dbadge dbadge-blue" data-en>Qualified</span><span class="dbadge dbadge-blue" data-es>Calificado</span></div><div class="dlead-text" data-en>DACA renewal inquiry. Full intake in Spanish. Consultation: Friday 2pm ✓</div><div class="dlead-text" data-es>Consulta de renovación DACA. Intake en español. Consulta: Viernes 2pm ✓</div></div></div>
-        <div class="dlead"><div class="dlead-dot dot-green"></div><div><div class="dlead-name">Rosa T. · Dental Patient <span class="dbadge dbadge-green" data-en>Scheduled</span><span class="dbadge dbadge-green" data-es>Agendado</span></div><div class="dlead-text" data-en>New patient, Spanish-speaking. Insurance verified. Appointment: Thursday 9am ✓</div><div class="dlead-text" data-es>Paciente nueva, hispanohablante. Seguro verificado. Cita: Jueves 9am ✓</div></div></div>
-      </div>
-      <div class="dash-foot" data-en>Echoline is answering calls right now</div>
-      <div class="dash-foot" data-es>Echoline está contestando llamadas ahora mismo</div>
     </div>
   </div>
 </div>
@@ -381,8 +401,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-inner">
-  <span class="titem">Bilingual Intake</span><span class="tsep"> · </span><span class="titem">Law Firm Receptionist</span><span class="tsep"> · </span><span class="titem">Dental Office Coverage</span><span class="tsep"> · </span><span class="titem">Medical Clinic Intake</span><span class="tsep"> · </span><span class="titem">Spanish-Speaking Clients</span><span class="tsep"> · </span><span class="titem">After-Hours Answering</span><span class="tsep"> · </span><span class="titem">No Long-Term Contracts</span><span class="tsep"> · </span><span class="titem">Intake Bilingüe</span><span class="tsep"> · </span><span class="titem">Recepcionista para Bufetes</span><span class="tsep"> · </span><span class="titem">Cobertura Dental</span><span class="tsep"> · </span><span class="titem">Intake para Clínicas</span><span class="tsep"> · </span><span class="titem">Clientes Hispanohablantes</span><span class="tsep"> · </span>
-  <span class="titem">Bilingual Intake</span><span class="tsep"> · </span><span class="titem">Law Firm Receptionist</span><span class="tsep"> · </span><span class="titem">Dental Office Coverage</span><span class="tsep"> · </span><span class="titem">Medical Clinic Intake</span><span class="tsep"> · </span><span class="titem">Spanish-Speaking Clients</span><span class="tsep"> · </span><span class="titem">After-Hours Answering</span><span class="tsep"> · </span><span class="titem">No Long-Term Contracts</span><span class="tsep"> · </span><span class="titem">Intake Bilingüe</span><span class="tsep"> · </span><span class="titem">Recepcionista para Bufetes</span><span class="tsep"> · </span><span class="titem">Cobertura Dental</span><span class="tsep"> · </span><span class="titem">Intake para Clínicas</span><span class="tsep"> · </span><span class="titem">Clientes Hispanohablantes</span><span class="tsep"> · </span>
+  <span class="titem">Bilingual Intake</span><span class="tsep"> · </span><span class="titem">Text-Back Automation</span><span class="tsep"> · </span><span class="titem">Dental Office Coverage</span><span class="tsep"> · </span><span class="titem">Medical Clinic Intake</span><span class="tsep"> · </span><span class="titem">Spanish-Speaking Clients</span><span class="tsep"> · </span><span class="titem">After-Hours Answering</span><span class="tsep"> · </span><span class="titem">No Per-Minute Billing</span><span class="tsep"> · </span><span class="titem">Intake Bilingüe</span><span class="tsep"> · </span><span class="titem">Automatización de Textos</span><span class="tsep"> · </span><span class="titem">Cobertura Dental</span><span class="tsep"> · </span><span class="titem">Intake para Clínicas</span><span class="tsep"> · </span><span class="titem">Clientes Hispanohablantes</span><span class="tsep"> · </span>
+  <span class="titem">Bilingual Intake</span><span class="tsep"> · </span><span class="titem">Text-Back Automation</span><span class="tsep"> · </span><span class="titem">Dental Office Coverage</span><span class="tsep"> · </span><span class="titem">Medical Clinic Intake</span><span class="tsep"> · </span><span class="titem">Spanish-Speaking Clients</span><span class="tsep"> · </span><span class="titem">After-Hours Answering</span><span class="tsep"> · </span><span class="titem">No Per-Minute Billing</span><span class="tsep"> · </span><span class="titem">Intake Bilingüe</span><span class="tsep"> · </span><span class="titem">Automatización de Textos</span><span class="tsep"> · </span><span class="titem">Cobertura Dental</span><span class="tsep"> · </span><span class="titem">Intake para Clínicas</span><span class="tsep"> · </span><span class="titem">Clientes Hispanohablantes</span><span class="tsep"> · </span>
 </div></div>
 
 <!-- TRUST BAR -->
@@ -511,13 +531,27 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   </div>
   <div class="plan-grid">
     <div class="plan">
+      <div class="plan-name">Automation · Automatización</div>
+      <div class="plan-tag" data-en>Text-Back Only</div><div class="plan-tag" data-es>Solo Texto Automático</div>
+      <div><span class="plan-amt">$99</span><span class="plan-per">/mo</span></div>
+      <div class="plan-note" data-en>flat rate · any business type · cancel anytime</div><div class="plan-note" data-es>tarifa plana · cualquier negocio · cancela cuando quieras</div>
+      <ul class="plan-feats">
+        <li data-en>Missed-call text-back in 30 seconds</li><li data-es>Texto automático en 30 segundos</li>
+        <li data-en>Bilingual English &amp; Spanish texts</li><li data-es>Textos bilingüe inglés y español</li>
+        <li data-en>Works for any business type</li><li data-es>Para cualquier tipo de negocio</li>
+        <li data-en>GHL-powered automation</li><li data-es>Automatización con GHL</li>
+        <li data-en>Weekly missed-call report</li><li data-es>Reporte semanal de llamadas perdidas</li>
+        <li data-en>Upgrade to live answering anytime</li><li data-es>Actualiza a atención en vivo cuando quieras</li>
+      </ul>
+      <button class="pcta o" onclick="goTo('contact')"><span data-en>Start here</span><span data-es>Comenzar</span></button>
+    </div>
+    <div class="plan">
       <div class="plan-name">Starter · Inicial</div>
-      <div class="plan-tag" data-en>Bilingual Intake</div><div class="plan-tag" data-es>Intake Bilingüe</div>
+      <div class="plan-tag" data-en>Live Bilingual Intake</div><div class="plan-tag" data-es>Intake Bilingüe en Vivo</div>
       <div><span class="plan-amt">$299</span><span class="plan-per">/mo</span></div>
       <div class="plan-note" data-en>flat rate · no per-minute fees · cancel anytime</div><div class="plan-note" data-es>tarifa plana · sin cobros por minuto · cancela cuando quieras</div>
       <ul class="plan-feats">
-        <li data-en>Live bilingual answering — business hours M–F</li><li data-es>Atención bilingüe en vivo — horario laboral</li>
-        <li data-en>English &amp; Spanish coverage</li><li data-es>Cobertura en inglés y español</li>
+        <li data-en>Live bilingual answering — business hours M–F</li><li data-es>Atención bilingüe en vivo — horario laboral L–V</li>
         <li data-en>Client intake &amp; qualification</li><li data-es>Intake y calificación de clientes</li>
         <li data-en>Appointment scheduling</li><li data-es>Agendamiento de citas</li>
         <li data-en>Missed-call text-back</li><li data-es>Texto automático por llamada perdida</li>
@@ -538,7 +572,6 @@ body.en span[data-en],body.en a[data-en]{display:inline}
         <li data-en>CRM entry &amp; lead delivery</li><li data-es>Entrada al CRM y entrega de prospectos</li>
         <li data-en>Custom intake scripts per practice</li><li data-es>Guiones de intake personalizados</li>
         <li data-en>Monthly performance review</li><li data-es>Revisión mensual de desempeño</li>
-        <li data-en>Priority support</li><li data-es>Soporte prioritario</li>
       </ul>
       <button class="pcta p" onclick="goTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
     </div>
@@ -549,18 +582,13 @@ body.en span[data-en],body.en a[data-en]{display:inline}
       <div class="plan-note" data-en>flat rate · no per-minute fees · cancel anytime</div><div class="plan-note" data-es>tarifa plana · sin cobros por minuto · cancela cuando quieras</div>
       <ul class="plan-feats">
         <li data-en>Everything in Professional</li><li data-es>Todo lo del plan Profesional</li>
+        <li data-en>24/7 live coverage</li><li data-es>Cobertura en vivo 24/7</li>
         <li data-en>Multiple location support</li><li data-es>Soporte para múltiples ubicaciones</li>
         <li data-en>Dedicated account manager</li><li data-es>Gerente de cuenta dedicado</li>
         <li data-en>Lead generation add-on eligible</li><li data-es>Elegible para generación de prospectos</li>
-        <li data-en>Full CRM management</li><li data-es>Gestión completa del CRM</li>
-        <li data-en>Quarterly strategy review</li><li data-es>Revisión trimestral de estrategia</li>
       </ul>
       <button class="pcta o" onclick="goTo('contact')"><span data-en>Get started</span><span data-es>Comenzar</span></button>
     </div>
-  </div>
-  <div class="textback">
-    <div><h4 data-en>Not ready for full coverage yet?</h4><h4 data-es>¿Aún no listo para cobertura completa?</h4><p data-en>Start with automated bilingual text-back only. Every missed call triggers an immediate English or Spanish text — keeping potential clients engaged before they call your competitor.</p><p data-es>Comienza solo con el texto bilingüe automático. Cada llamada perdida activa un texto inmediato en inglés o español.</p></div>
-    <div class="tb-price" style="text-align:center;flex-shrink:0"><div class="amt">$99</div><div class="per">/mo</div><button class="pcta o" style="margin-top:10px;width:120px" onclick="goTo('contact')"><span data-en>Start here</span><span data-es>Comenzar</span></button></div>
   </div>
 </div>
 </section>
@@ -571,10 +599,10 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   <p class="eyebrow" data-en>Why Echoline</p><p class="eyebrow" data-es>Por Qué Echoline</p>
   <h2 class="sec-title" data-en>Not your average answering service.</h2>
   <h2 class="sec-title" data-es>No somos un servicio de contestación promedio.</h2>
-  <p class="sec-desc" data-en>We come from the legal services world. We understand compliance, intake quality, and what it means to handle sensitive client information with professionalism.</p>
-  <p class="sec-desc" data-es>Venimos del mundo de los servicios legales. Entendemos el cumplimiento, la calidad del intake y lo que significa manejar información sensible con profesionalismo.</p>
+  <p class="sec-desc" data-en>Built for high-stakes environments where intake quality, bilingual coverage, and response time actually matter.</p>
+  <p class="sec-desc" data-es>Construido para entornos de alto impacto donde la calidad del intake, la cobertura bilingüe y el tiempo de respuesta realmente importan.</p>
   <div class="why-grid">
-    <div class="wcard"><div class="wicon">🏛️</div><div><h3>Legal &amp; Medical Intake Background<small data-en>Experiencia en Intake Legal y Médico</small></h3><p data-en>Our team comes from high-compliance legal services environments. We handle sensitive intake carefully, professionally, and accurately — every time.</p><p data-es>Nuestro equipo proviene de entornos de servicios legales de alto cumplimiento.</p></div></div>
+    <div class="wcard"><div class="wicon">🏛️</div><div><h3>Intake Built for Your Practice<small data-en>Intake Diseñado para Tu Práctica</small></h3><p data-en>We handle sensitive intake carefully, professionally, and accurately — with custom scripts built around your specific practice type, not a generic call center flow.</p><p data-es>Manejamos el intake con cuidado y precisión — con guiones personalizados para tu tipo de práctica, no un flujo genérico de call center.</p></div></div>
     <div class="wcard"><div class="wicon">🌎</div><div><h3>Bilingual Is Our Core — Not an Add-On<small data-en>Lo Bilingüe Es Nuestro Core</small></h3><p data-en>Every plan includes full English and Spanish coverage. We don't upsell you on basic bilingual access — it's standard because your clients deserve it.</p><p data-es>Todos los planes incluyen cobertura completa en inglés y español. No te cobramos extra por el acceso bilingüe básico.</p></div></div>
     <div class="wcard"><div class="wicon">📋</div><div><h3>Custom Scripts for Your Practice<small data-en>Guiones Personalizados para Tu Práctica</small></h3><p data-en>We don't use generic scripts. We build intake flows specific to your practice type so every intake is accurate and professional.</p><p data-es>No usamos guiones genéricos. Construimos flujos de intake específicos para tu tipo de práctica.</p></div></div>
     <div class="wcard"><div class="wicon">🔒</div><div><h3>HIPAA-Aware Protocols<small data-en>Protocolos con Conciencia HIPAA</small></h3><p data-en>We understand the sensitivity of medical and legal information. Our intake protocols are designed with privacy compliance in mind from day one.</p><p data-es>Entendemos la sensibilidad de la información médica y legal. Nuestros protocolos están diseñados con cumplimiento de privacidad desde el primer día.</p></div></div>
@@ -582,15 +610,22 @@ body.en span[data-en],body.en a[data-en]{display:inline}
 </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<div class="testi">
-<div class="testi-inner">
-  <div class="testi-quote">"</div>
-  <p class="testi-text" data-en>We were losing Spanish-speaking personal injury clients every week because no one could handle the call properly. Echoline changed that immediately. Within the first month we had 6 new qualified consultations we would have missed.</p>
-  <p class="testi-text" data-es>Perdíamos clientes hispanohablantes de lesiones personales cada semana porque nadie podía manejar la llamada correctamente. Echoline cambió eso de inmediato. En el primer mes tuvimos 6 nuevas consultas calificadas que habríamos perdido.</p>
-  <div class="testi-author">David R., Esq.</div>
-  <div class="testi-role" data-en>Personal Injury Law Firm · California</div>
-  <div class="testi-role" data-es>Bufete de Lesiones Personales · California</div>
+<!-- FOUNDING OFFER -->
+<div class="founding">
+<div class="founding-inner">
+  <div class="founding-badge" data-en>🚀 Now Accepting Founding Clients</div>
+  <div class="founding-badge" data-es>🚀 Aceptando Clientes Fundadores</div>
+  <h2 data-en>Be among the first practices to run on <em>Echoline.</em></h2>
+  <h2 data-es>Sé una de las primeras prácticas en usar <em>Echoline.</em></h2>
+  <p data-en>We're selectively onboarding founding clients in dental and medical verticals. You get direct access to our team, a customized setup, and flat-rate pricing locked in from day one.</p>
+  <p data-es>Estamos incorporando selectivamente clientes fundadores en los sectores dental y médico. Acceso directo a nuestro equipo, configuración personalizada y precio fijo desde el primer día.</p>
+  <div class="founding-perks">
+    <span class="fperk" data-en>No setup fees</span><span class="fperk" data-es>Sin costos de configuración</span>
+    <span class="fperk" data-en>Month-to-month, cancel anytime</span><span class="fperk" data-es>Mes a mes, cancela cuando quieras</span>
+    <span class="fperk" data-en>Live in 24 hours</span><span class="fperk" data-es>En funcionamiento en 24 horas</span>
+    <span class="fperk" data-en>Direct line to our team</span><span class="fperk" data-es>Línea directa con nuestro equipo</span>
+  </div>
+  <button class="btn-primary" onclick="goTo('contact')" style="font-size:15px;padding:14px 32px"><span data-en>Apply for a founding spot →</span><span data-es>Solicita un lugar fundador →</span></button>
 </div>
 </div>
 
@@ -663,7 +698,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
               <option>Law Firm — Other</option>
               <option>Dental Office</option>
               <option>Medical Clinic / Urgent Care</option>
-              <option>Other</option>
+              <option>Other Local Business</option>
             </select>
           </div>
           <div class="frow">
@@ -673,10 +708,10 @@ body.en span[data-en],body.en a[data-en]{display:inline}
           <div class="fg"><label data-en>Plan of Interest</label><label data-es>Plan de Interés</label>
             <select name="plan">
               <option>Not sure yet</option>
+              <option>Automation — $99/month (Text-Back Only)</option>
               <option>Starter — $299/month</option>
               <option>Professional — $499/month (Most Popular)</option>
               <option>Premium 24/7 — $699/month</option>
-              <option>Text-Back Only — $99/month</option>
             </select>
           </div>
           <div class="fg"><label data-en>Tell us about your practice (optional)</label><label data-es>Cuéntanos sobre tu práctica (opcional)</label><textarea name="message" rows="3"></textarea></div>
@@ -703,8 +738,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
       <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="30" rx="6" fill="rgba(255,255,255,0.1)"/><path d="M6 15 L15 6 L24 15" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M6 15 L15 24 L24 15" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="15" cy="15" r="2.5" fill="#fff"/></svg>
       <span style="font-family:var(--serif);font-size:16px;font-weight:700;color:#fff">Echoline <span style="color:#60A5FA">Solutions</span></span>
     </div>
-    <p class="f-desc" data-en>Bilingual virtual receptionist and client intake for law firms, dental offices, and medical clinics. English and Spanish on every plan.</p>
-    <p class="f-desc" data-es>Recepcionista virtual bilingüe e intake de clientes para bufetes, consultorios dentales y clínicas médicas. Inglés y español en todos los planes.</p>
+    <p class="f-desc" data-en>Bilingual virtual receptionist and client intake for dental offices, medical clinics, and any business that can't afford to miss a call. English and Spanish on every plan.</p>
+    <p class="f-desc" data-es>Recepcionista virtual bilingüe e intake de clientes para consultorios dentales, clínicas y cualquier negocio que no puede perder llamadas. Inglés y español en todos los planes.</p>
   </div>
   <div class="f-col">
     <h4 data-en>Services</h4><h4 data-es>Servicios</h4>
@@ -734,7 +769,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   </div>
 </div>
 <div class="f-bottom">
-  <span class="f-copy">© 2025 Echoline Solutions. All rights reserved.</span>
+  <span class="f-copy">© 2026 Echoline Solutions. All rights reserved.</span>
   <div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
 </div>
 </footer>
