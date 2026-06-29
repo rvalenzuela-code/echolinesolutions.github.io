@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Echoline Solutions — Bilingual virtual receptionist and client intake for law firms, dental offices, and medical clinics. Never miss a Spanish-speaking client again."/>
+<meta name="description" content="Echoline Solutions — Bilingual virtual receptionist, client intake, and automated SMS for law firms, dental offices, medical clinics, and any local business that can't afford to miss a call."/>
 <title>Echoline Solutions — Bilingual Legal &amp; Medical Intake</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -88,7 +88,7 @@ section{padding:96px 24px}
 .sec-desc{font-size:16px;color:var(--g500);line-height:1.7;max-width:600px}
 
 /* SERVE */
-.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.serve-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
 .serve-card{border:1px solid var(--g100);border-radius:var(--r-lg);padding:32px 28px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s}
 .serve-card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
 .serve-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
@@ -273,7 +273,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .hero-right{display:none}
-  .serve-grid,.svc-grid{grid-template-columns:1fr}
+  .serve-grid,.svc-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .steps::before{display:none}
   .plan-grid{grid-template-columns:repeat(2,1fr)}
@@ -292,6 +292,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   .footer-grid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
   .plan-grid{grid-template-columns:1fr}
+  .serve-grid,.svc-grid{grid-template-columns:1fr}
   .founding-perks{flex-direction:column;align-items:center;gap:16px}
 }
 </style>
@@ -333,8 +334,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
     <h1 data-es>Cada cliente merece ser escuchado — en su <em>idioma.</em></h1>
     <p class="hero-sub" data-en>Cada cliente merece ser escuchado — en su idioma.</p>
     <p class="hero-sub" data-es>Every client deserves to be heard — in their language.</p>
-    <p class="hero-desc" data-en>Echoline provides bilingual virtual receptionist and client intake for law firms, dental offices, and medical clinics — so you never miss a Spanish-speaking client again.</p>
-    <p class="hero-desc" data-es>Echoline ofrece recepcionista virtual bilingüe e intake de clientes para bufetes, consultorios y clínicas — para que nunca pierdas un cliente hispanohablante.</p>
+    <p class="hero-desc" data-en>Echoline provides bilingual live answering, client intake, and automated SMS for law firms, dental offices, medical clinics, and any local business that can't afford to miss a call.</p>
+    <p class="hero-desc" data-es>Echoline ofrece atención en vivo bilingüe, intake de clientes y SMS automatizado para bufetes, consultorios, clínicas y cualquier negocio local que no puede perder llamadas.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary"><span data-en>Book a Free Consultation →</span><span data-es>Agenda una Consulta Gratis →</span></a>
       <a href="#serve" class="btn-ghost"><span data-en>See Who We Serve</span><span data-es>Ver a Quién Servimos</span></a>
@@ -447,6 +448,13 @@ body.en span[data-en],body.en a[data-en]{display:inline}
       <p data-es>Centros de atención urgente, clínicas especializadas y consultorios privados. Manejamos el intake, agendamiento y verificación de seguros de forma bilingüe.</p>
       <div class="serve-tags"><span class="stag" data-en>Patient Intake</span><span class="stag" data-es>Intake de Pacientes</span><span class="stag" data-en>Scheduling</span><span class="stag" data-es>Agendamiento</span><span class="stag" data-en>Insurance Verification</span><span class="stag" data-es>Verificación de Seguro</span></div>
     </div>
+    <div class="scard">
+      <div class="serve-icon">🏪</div>
+      <h3>Local Businesses<small data-en>Negocios Locales</small></h3>
+      <p data-en>HVAC, plumbers, auto shops, gyms, salons, restaurants, real estate agents — any business that runs on inbound calls. Never let a missed call go to your competitor again.</p>
+      <p data-es>HVAC, plomeros, talleres, gimnasios, salones, restaurantes, agentes inmobiliarios — cualquier negocio que depende de llamadas entrantes. Nunca pierdas una llamada a tu competencia.</p>
+      <div class="serve-tags"><span class="stag" data-en>Missed-Call SMS</span><span class="stag" data-es>SMS Automático</span><span class="stag" data-en>Live Answering</span><span class="stag" data-es>Atención en Vivo</span><span class="stag" data-en>Any Niche</span><span class="stag" data-es>Cualquier Rubro</span></div>
+    </div>
   </div>
 </div>
 </section>
@@ -459,8 +467,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   <h2 class="sec-title" data-es>Los clientes hispanohablantes llaman. Nadie contesta.</h2>
   <p class="sec-sub" data-en>Los clientes hispanohablantes llaman. Nadie contesta.</p>
   <p class="sec-sub" data-es>Spanish-speaking clients are calling. Nobody answers.</p>
-  <p class="sec-desc" data-en>41 million people in the US speak Spanish at home. Most law firms, dental offices, and clinics have no one who can take their call professionally — in their language.</p>
-  <p class="sec-desc" data-es>41 millones de personas en EEUU hablan español en casa. La mayoría de los bufetes y clínicas no tiene a nadie que pueda atenderles en su idioma.</p>
+  <p class="sec-desc" data-en>41 million people in the US speak Spanish at home. Most law firms, dental offices, clinics, and local businesses have no one who can take their call professionally — in their language.</p>
+  <p class="sec-desc" data-es>41 millones de personas en EEUU hablan español en casa. La mayoría de los bufetes, clínicas y negocios locales no tiene a nadie que pueda atenderles en su idioma.</p>
   <div class="prob-grid">
     <div class="prob-card"><div class="prob-num">01</div><h3>Calls go to voicemail<small data-en>Las llamadas van al buzón</small></h3><p data-en>Most professional offices miss 30–40% of inbound calls during peak hours. Spanish-speaking callers who hit voicemail almost never leave a message — they hang up and call someone else.</p><p data-es>La mayoría de los despachos pierden el 30-40% de las llamadas entrantes. Los hispanohablantes que llegan al buzón casi nunca dejan mensaje.</p></div>
     <div class="prob-card"><div class="prob-num">02</div><h3>Language barriers lose clients<small data-en>Las barreras idiomáticas pierden clientes</small></h3><p data-en>When a Spanish-speaking client calls and no one can help them in their language, they don't wait. They find someone who can. Your competitor just got that case or appointment.</p><p data-es>Cuando un cliente hispanohablante llama y nadie puede atenderle en su idioma, no espera. Busca quien pueda. Tu competidor acaba de ganar ese caso.</p></div>
@@ -539,7 +547,7 @@ body.en span[data-en],body.en a[data-en]{display:inline}
         <li data-en>Missed-call text-back in 30 seconds</li><li data-es>Texto automático en 30 segundos</li>
         <li data-en>Bilingual English &amp; Spanish texts</li><li data-es>Textos bilingüe inglés y español</li>
         <li data-en>Works for any business type</li><li data-es>Para cualquier tipo de negocio</li>
-        <li data-en>GHL-powered automation</li><li data-es>Automatización con GHL</li>
+        <li data-en>Instant automated response system</li><li data-es>Sistema de respuesta automática instantánea</li>
         <li data-en>Weekly missed-call report</li><li data-es>Reporte semanal de llamadas perdidas</li>
         <li data-en>Upgrade to live answering anytime</li><li data-es>Actualiza a atención en vivo cuando quieras</li>
       </ul>
@@ -617,7 +625,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
   <div class="founding-badge" data-es>🚀 Aceptando Clientes Fundadores</div>
   <h2 data-en>Be among the first practices to run on <em>Echoline.</em></h2>
   <h2 data-es>Sé una de las primeras prácticas en usar <em>Echoline.</em></h2>
-  <p data-en>We're selectively onboarding founding clients in dental and medical verticals. You get direct access to our team, a customized setup, and flat-rate pricing locked in from day one.</p>
+  <p data-en>We're selectively onboarding founding clients across law firms, dental offices, medical clinics, and local businesses. You get direct access to our team, a customized setup, and flat-rate pricing locked in for as long as you stay.</p>
+  <p data-es>Estamos incorporando selectivamente clientes fundadores en bufetes, consultorios dentales, clínicas médicas y negocios locales. Acceso directo a nuestro equipo, configuración personalizada y precio fijo para siempre.</p>
   <p data-es>Estamos incorporando selectivamente clientes fundadores en los sectores dental y médico. Acceso directo a nuestro equipo, configuración personalizada y precio fijo desde el primer día.</p>
   <div class="founding-perks">
     <span class="fperk" data-en>No setup fees</span><span class="fperk" data-es>Sin costos de configuración</span>
@@ -738,7 +747,8 @@ body.en span[data-en],body.en a[data-en]{display:inline}
       <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="30" rx="6" fill="rgba(255,255,255,0.1)"/><path d="M6 15 L15 6 L24 15" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M6 15 L15 24 L24 15" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="15" cy="15" r="2.5" fill="#fff"/></svg>
       <span style="font-family:var(--serif);font-size:16px;font-weight:700;color:#fff">Echoline <span style="color:#60A5FA">Solutions</span></span>
     </div>
-    <p class="f-desc" data-en>Bilingual virtual receptionist and client intake for dental offices, medical clinics, and any business that can't afford to miss a call. English and Spanish on every plan.</p>
+    <p class="f-desc" data-en>Bilingual live answering, client intake, and automated SMS for law firms, dental offices, medical clinics, and any local business that can't afford to miss a call. English and Spanish on every plan.</p>
+    <p class="f-desc" data-es>Atención en vivo bilingüe, intake de clientes y SMS automatizado para bufetes, consultorios, clínicas y cualquier negocio local. Inglés y español en todos los planes.</p>
     <p class="f-desc" data-es>Recepcionista virtual bilingüe e intake de clientes para consultorios dentales, clínicas y cualquier negocio que no puede perder llamadas. Inglés y español en todos los planes.</p>
   </div>
   <div class="f-col">
